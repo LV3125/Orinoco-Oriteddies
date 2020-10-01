@@ -1,0 +1,21 @@
+// HERO
+#hero{
+    height: 700px;
+    background-image: url("../img/bear-hero-2.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    top: 80px;
+    & #title-accueil{
+        text-align: center;
+        font-family: $title-style;
+        margin-top: 8%;
+        & h1{
+            font-size: $accueil-h1;
+            line-height: 2em;
+        }
+        & h2{
+            font-size: $accueil-h2;
+        }
+    }
+}

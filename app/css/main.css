@@ -22,6 +22,8 @@ a {
   margin-left: 50px;
   margin-right: 30px;
   color: #613d6a;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   font-family: "Neucha", cursive;
   font-size: 1.3em;
   border-bottom: 2px solid transparent;
@@ -36,6 +38,30 @@ a {
   color: #cf8252;
   border: 2px solid #cf8252;
   border-radius: 10px;
+}
+
+#hero {
+  height: 700px;
+  background-image: url("../img/bear-hero-2.jpg");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  top: 80px;
+}
+
+#hero #title-accueil {
+  text-align: center;
+  font-family: "Finger Paint", cursive;
+  margin-top: 8%;
+}
+
+#hero #title-accueil h1 {
+  font-size: 4em;
+  line-height: 2em;
+}
+
+#hero #title-accueil h2 {
+  font-size: 2em;
 }
 
 /*!
