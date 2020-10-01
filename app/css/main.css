@@ -1,12 +1,9 @@
-a {
-  color: black;
-}
-
 #menu {
   background-color: #f3ebf3;
   height: 80px;
   width: 100%;
   position: fixed;
+  z-index: 10;
 }
 
 #menu .navbar-brand {
@@ -60,8 +57,56 @@ a {
   line-height: 2em;
 }
 
-#hero #title-accueil h2 {
+#hero #title-accueil p {
   font-size: 2em;
+}
+
+main {
+  position: relative;
+  top: 160px;
+  padding-bottom: 80px;
+}
+
+main #image-presentation-produit {
+  background-image: url("../img/bear-produit.jpg");
+  background-size: cover;
+  background-position: bottom;
+  margin-right: 20px;
+  height: 300px;
+}
+
+main #text-presentation-produit {
+  height: 300px;
+  margin-left: 20px;
+  font-family: "Neucha", cursive;
+  font-size: 1.3em;
+  letter-spacing: 0.1em;
+}
+
+main #text-presentation-produit h2 {
+  font-family: "Finger Paint", cursive;
+  margin-bottom: 40px;
+}
+
+main #text-presentation-produit p {
+  margin-bottom: 40px;
+}
+
+main #text-presentation-produit a {
+  color: #613d6a;
+  border: 2px solid #613d6a;
+  background-color: #f3ebf3;
+  font-weight: bold;
+  padding: 15px 20px;
+  -webkit-transition: margin-left 0.5s;
+  transition: margin-left 0.5s;
+}
+
+main #text-presentation-produit a:hover {
+  text-decoration: none;
+  color: #f3ebf3;
+  background-color: #613d6a;
+  margin-left: 20px;
 }
 
 /*!

@@ -3,6 +3,7 @@
     height: 80px;
     width: 100%;
     position: fixed;
+    z-index: 10;
     & .navbar-brand{
         margin-left: 15px;
     }

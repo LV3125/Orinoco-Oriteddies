@@ -1,0 +1,41 @@
+// SECTION PRESENTATION PRODUIT
+main{
+    position: relative;
+    top: 160px;
+    padding-bottom: 80px;
+    & #image-presentation-produit{
+        background-image: url("../img/bear-produit.jpg") ;
+        background-size: cover;
+        background-position: bottom;
+        margin-right: 20px;
+        height: 300px;
+    }
+    & #text-presentation-produit{
+        height: 300px;
+        margin-left: 20px;
+        font-family: $text-style;
+        font-size: $accueil-text;
+        letter-spacing: 0.1em;
+        & h2{
+            font-family: $title-style;
+            margin-bottom: 40px;
+        }
+        & p{
+            margin-bottom: 40px;
+        }
+        & a{
+            color: $purple-dark;
+            border: 2px solid $purple-dark;
+            background-color: $purple-light;
+            font-weight: bold;
+            padding: 15px 20px;
+            transition: margin-left 0.5s;
+            &:hover{
+                text-decoration: none;
+                color: $purple-light;
+                background-color: $purple-dark;
+                margin-left: 20px;
+            }
+        }
+    }
+}
