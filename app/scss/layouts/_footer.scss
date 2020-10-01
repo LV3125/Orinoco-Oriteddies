@@ -1,0 +1,31 @@
+// FOOTER
+footer{
+    position: relative;
+    margin-top: 180px;
+    height: 80px;
+    background-color: $orange;
+    & ul{
+        list-style: none;
+        text-align: center;
+        & li{
+            display: inline-block;
+            font-family: $text-style;
+            font-size: $footer;
+            margin-top: 30px;
+            margin-left: 50px;
+            color: $purple-dark;
+            & a{
+                color: $purple-dark;
+                border: 2px solid $orange;
+                padding: 10px;
+                border-radius: 10px;
+                &:hover{
+                    color: $purple-light;
+                    text-decoration: none;
+                    border: 2px solid $purple-light;
+                    background-color: $purple;
+                }
+            }
+        }
+    }
+}
