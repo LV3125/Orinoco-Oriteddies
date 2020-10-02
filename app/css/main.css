@@ -63,7 +63,7 @@
 
 footer {
   position: relative;
-  margin-top: 180px;
+  top: 180px;
   height: 80px;
   background-color: #cf8252;
 }
