@@ -144,6 +144,99 @@ main #text-presentation-produit a:hover {
   margin-left: 20px;
 }
 
+#product-page h1 {
+  text-align: center;
+}
+
+#product-page .product {
+  border: 2px solid #613d6a;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 15px #613d6a;
+          box-shadow: 1px 1px 15px #613d6a;
+  margin-top: 5%;
+}
+
+#product-page .product .image-product {
+  height: auto;
+  padding: 0;
+  border-right: 2px solid #613d6a;
+  border-radius: 10px 0 0 10px;
+}
+
+#product-page .product .title-product {
+  padding: 5% 0%;
+  text-align: center;
+}
+
+#product-page .product .title-product h2 {
+  font-size: 1.5em;
+  font-family: "Finger Paint", cursive;
+}
+
+#product-page .product .title-product p {
+  font-size: 1.3em;
+  font-family: "Finger Paint", cursive;
+}
+
+#product-page .product .title-product .btn {
+  background-color: #f3ebf3;
+  border: 2px solid #b49eb0;
+  font-family: "Neucha", cursive;
+  font-size: 1.15em;
+  margin-top: 5%;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+#product-page .product .title-product .btn:hover {
+  background-color: #613d6a;
+  border-color: #613d6a;
+  color: white;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+#product-page .product p, #product-page .product label {
+  font-family: "Neucha", cursive;
+  font-size: 1.15em;
+}
+
+#product-page .informations {
+  display: none;
+}
+
+#product-page #product1 .image-product {
+  background: url("http://localhost:3000/images/teddy_1.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#product-page #product2 .image-product {
+  background: url("http://localhost:3000/images/teddy_2.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#product-page #product3 .image-product {
+  background: url("http://localhost:3000/images/teddy_3.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#product-page #product4 .image-product {
+  background: url("http://localhost:3000/images/teddy_4.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#product-page #product5 .image-product {
+  background: url("http://localhost:3000/images/teddy_5.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

@@ -1,0 +1,86 @@
+// PRODUCTS PAGE
+#product-page{
+    & h1{
+        text-align: center;
+    }
+    & .product{
+        border: 2px solid $purple-dark;
+        border-radius: 10px;
+        box-shadow: 1px 1px 15px $purple-dark;
+        margin-top: 5%;
+        & .image-product{
+            height: auto;
+            padding: 0;
+            border-right: 2px solid $purple-dark;
+            border-radius: 10px 0 0 10px;
+        }
+        & .title-product{
+            padding: 5% 0%;
+            text-align: center;
+            & h2{
+                font-size: $product-h2;
+                font-family: $title-style;
+            }
+            & p{
+                font-size: $product-name;
+                font-family: $title-style;
+            }
+            & .btn{
+                background-color: $purple-light;
+                border: 2px solid $purple;
+                font-family: $text-style;
+                font-size: $product-text;
+                margin-top: 5%;
+                transition: transform 0.2s ease-in-out;
+                &:hover{
+                    background-color: $purple-dark;
+                    border-color: $purple-dark;
+                    color: white;
+                    transform: translateY(5px);
+                }
+            }
+        }
+        & p, label{
+            font-family: $text-style;
+            font-size: $product-text;
+        }
+    }
+    & .informations{
+        display: none;
+    }
+    & #product1{
+        & .image-product{
+            background: url("http://localhost:3000/images/teddy_1.jpg") no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+    & #product2{ 
+        & .image-product{
+            background: url("http://localhost:3000/images/teddy_2.jpg") no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+     }
+     & #product3{
+        & .image-product{
+            background: url("http://localhost:3000/images/teddy_3.jpg") no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+     }
+     & #product4{
+        & .image-product{
+            background: url("http://localhost:3000/images/teddy_4.jpg") no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+     }
+     & #product5{ 
+        & .image-product{
+            background: url("http://localhost:3000/images/teddy_5.jpg") no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+     }
+}
