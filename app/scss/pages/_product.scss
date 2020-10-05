@@ -37,6 +37,7 @@
                 transition: transform 0.2s ease-in-out;
                 &:hover{
                     background-color: $purple-dark;
+                    text-decoration: none;
                     border-color: $purple-dark;
                     color: white;
                     transform: translateY(5px);

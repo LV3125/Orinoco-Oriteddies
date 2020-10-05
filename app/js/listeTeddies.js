@@ -41,6 +41,10 @@ function displayTeddies(bears){
         let btnProduct = document.createElement("button");
             btnProduct.classList.add("btn");
             btnProduct.innerText = "Plus d'information";
+            btnProduct.onclick = function OpenProductPage(){
+                window.localStorage.setItem('productDetails', JSON.stringify(bears[i]));
+                window.open("ficheProduit.html", "_self");
+            }
 
         listBears.append(productCard);
         productCard.append(productLeftDiv,productRightDiv);

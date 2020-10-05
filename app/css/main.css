@@ -195,6 +195,7 @@ main #text-presentation-produit a:hover {
 
 #product-page .product .title-product .btn:hover {
   background-color: #613d6a;
+  text-decoration: none;
   border-color: #613d6a;
   color: white;
   -webkit-transform: translateY(5px);
