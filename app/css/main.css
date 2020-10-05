@@ -146,6 +146,7 @@ main #text-presentation-produit a:hover {
 
 #product-page h1 {
   text-align: center;
+  font-family: "Finger Paint", cursive;
 }
 
 #product-page .product {
@@ -153,11 +154,11 @@ main #text-presentation-produit a:hover {
   border-radius: 10px;
   -webkit-box-shadow: 1px 1px 15px #613d6a;
           box-shadow: 1px 1px 15px #613d6a;
-  margin-top: 5%;
+  margin: 5% 20%;
 }
 
 #product-page .product .image-product {
-  height: auto;
+  height: 450px;
   padding: 0;
   border-right: 2px solid #613d6a;
   border-radius: 10px 0 0 10px;
@@ -171,11 +172,13 @@ main #text-presentation-produit a:hover {
 #product-page .product .title-product h2 {
   font-size: 1.5em;
   font-family: "Finger Paint", cursive;
+  margin-bottom: 10%;
 }
 
 #product-page .product .title-product p {
+  margin-bottom: 5%;
   font-size: 1.3em;
-  font-family: "Finger Paint", cursive;
+  font-family: "Neucha", cursive;
 }
 
 #product-page .product .title-product .btn {

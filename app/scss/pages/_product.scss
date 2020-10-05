@@ -2,14 +2,15 @@
 #product-page{
     & h1{
         text-align: center;
+        font-family: $title-style;
     }
     & .product{
         border: 2px solid $purple-dark;
         border-radius: 10px;
         box-shadow: 1px 1px 15px $purple-dark;
-        margin-top: 5%;
+        margin: 5% 20%;
         & .image-product{
-            height: auto;
+            height: 450px;
             padding: 0;
             border-right: 2px solid $purple-dark;
             border-radius: 10px 0 0 10px;
@@ -20,10 +21,12 @@
             & h2{
                 font-size: $product-h2;
                 font-family: $title-style;
+                margin-bottom: 10%;
             }
             & p{
+                margin-bottom: 5%;
                 font-size: $product-name;
-                font-family: $title-style;
+                font-family: $text-style;
             }
             & .btn{
                 background-color: $purple-light;
