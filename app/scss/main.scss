@@ -1,4 +1,5 @@
 @import "base/reset";
+@import "base/global";
 @import "base/fonts";
 @import "utils/variable_ovverides";
 @import "layouts/nav";
@@ -6,5 +7,6 @@
 @import "layouts/footer";
 @import "pages/accueil";
 @import "pages/product";
+@import "pages/detailProduct";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 

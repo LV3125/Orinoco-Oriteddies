@@ -41,6 +41,7 @@ function displayTeddies(bears){
         let btnProduct = document.createElement("button");
             btnProduct.classList.add("btn");
             btnProduct.innerText = "Plus d'information";
+            //Lorsque l'on clique sur le bouton "plus d'information" création d'une entrée dans le LocalStorage qui liste les détails du produit sur lequel on clique
             btnProduct.onclick = function OpenProductPage(){
                 window.localStorage.setItem('productDetails', JSON.stringify(bears[i]));
                 window.open("ficheProduit.html", "_self");

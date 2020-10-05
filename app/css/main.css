@@ -1,3 +1,7 @@
+.bold {
+  font-weight: bold;
+}
+
 #menu {
   background-color: #f3ebf3;
   height: 80px;
@@ -144,12 +148,12 @@ main #text-presentation-produit a:hover {
   margin-left: 20px;
 }
 
-#product-page h1 {
+#productPage h1 {
   text-align: center;
   font-family: "Finger Paint", cursive;
 }
 
-#product-page .product {
+#productPage .product {
   border: 2px solid #613d6a;
   border-radius: 10px;
   -webkit-box-shadow: 1px 1px 15px #613d6a;
@@ -157,31 +161,31 @@ main #text-presentation-produit a:hover {
   margin: 5% 20%;
 }
 
-#product-page .product .image-product {
+#productPage .product .image-product {
   height: 450px;
   padding: 0;
   border-right: 2px solid #613d6a;
   border-radius: 10px 0 0 10px;
 }
 
-#product-page .product .title-product {
+#productPage .product .title-product {
   padding: 5% 0%;
   text-align: center;
 }
 
-#product-page .product .title-product h2 {
+#productPage .product .title-product h2 {
   font-size: 1.5em;
   font-family: "Finger Paint", cursive;
   margin-bottom: 10%;
 }
 
-#product-page .product .title-product p {
+#productPage .product .title-product p {
   margin-bottom: 5%;
   font-size: 1.3em;
   font-family: "Neucha", cursive;
 }
 
-#product-page .product .title-product .btn {
+#productPage .product .title-product .btn {
   background-color: #f3ebf3;
   border: 2px solid #b49eb0;
   font-family: "Neucha", cursive;
@@ -193,7 +197,7 @@ main #text-presentation-produit a:hover {
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
-#product-page .product .title-product .btn:hover {
+#productPage .product .title-product .btn:hover {
   background-color: #613d6a;
   text-decoration: none;
   border-color: #613d6a;
@@ -202,43 +206,75 @@ main #text-presentation-produit a:hover {
           transform: translateY(5px);
 }
 
-#product-page .product p, #product-page .product label {
+#productPage .product p, #productPage .product label {
   font-family: "Neucha", cursive;
   font-size: 1.15em;
 }
 
-#product-page .informations {
+#productPage .informations {
   display: none;
 }
 
-#product-page #product1 .image-product {
+#productPage #product1 .image-product {
   background: url("http://localhost:3000/images/teddy_1.jpg") no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-#product-page #product2 .image-product {
+#productPage #product2 .image-product {
   background: url("http://localhost:3000/images/teddy_2.jpg") no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-#product-page #product3 .image-product {
+#productPage #product3 .image-product {
   background: url("http://localhost:3000/images/teddy_3.jpg") no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-#product-page #product4 .image-product {
+#productPage #product4 .image-product {
   background: url("http://localhost:3000/images/teddy_4.jpg") no-repeat;
   background-position: center;
   background-size: cover;
 }
 
-#product-page #product5 .image-product {
+#productPage #product5 .image-product {
   background: url("http://localhost:3000/images/teddy_5.jpg") no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.productCard {
+  padding: 3% 0%;
+  text-align: center;
+  border: 2px solid #613d6a;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 15px #613d6a;
+          box-shadow: 1px 1px 15px #613d6a;
+}
+
+.productCard h1 {
+  font-family: "Finger Paint", cursive;
+  margin-bottom: 5%;
+}
+
+.productCard .productImagePageDetail {
+  height: 400px;
+}
+
+.productCard p, .productCard label {
+  font-family: "Neucha", cursive;
+  font-size: 1.4em;
+  margin: 2% 2%;
+}
+
+.productCard p span, .productCard label span {
+  font-size: 1.5em;
+}
+
+.productCard select {
+  font-family: "Neucha", cursive;
 }
 
 /*!
