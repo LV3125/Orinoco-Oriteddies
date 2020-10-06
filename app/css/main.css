@@ -1,5 +1,9 @@
+html {
+  height: 100%;
+}
+
 body {
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .bold {
@@ -78,8 +82,9 @@ body {
 }
 
 footer {
-  position: relative;
-  top: 180px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   height: 80px;
   background-color: #cf8252;
 }
@@ -115,7 +120,7 @@ footer ul li a:hover {
 main {
   position: relative;
   top: 160px;
-  padding-bottom: 80px;
+  padding-bottom: 180px;
 }
 
 main #image-presentation-produit {
@@ -371,10 +376,6 @@ main #text-presentation-produit a:hover {
   text-decoration: none;
 }
 
-#basketRecap {
-  min-height: 65vh;
-}
-
 #basketRecap h1 {
   font-family: "Finger Paint", cursive;
   text-align: center;
@@ -421,6 +422,41 @@ main #text-presentation-produit a:hover {
 #basketRecap .row .detail .quantityDiv i {
   font-size: 1.2em;
   color: #cf8252;
+}
+
+#basketRecap .containNoBasket {
+  background: #b49eb0;
+  border: 2px solid #613d6a;
+  border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5%;
+  font-family: "Neucha", cursive;
+}
+
+#basketRecap .containNoBasket p {
+  font-size: 1.4em;
+}
+
+#basketRecap .containNoBasket button {
+  font-size: 1.4em;
+  background: #f3ebf3;
+  border: 2px solid #613d6a;
+  margin-top: 3%;
+}
+
+#basketRecap .containNoBasket button a {
+  color: #613d6a;
+}
+
+#basketRecap .containNoBasket button:hover {
+  background: #613d6a;
+}
+
+#basketRecap .containNoBasket button:hover a {
+  color: white;
+  text-decoration: none;
 }
 
 /*!

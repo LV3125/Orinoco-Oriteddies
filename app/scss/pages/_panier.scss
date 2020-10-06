@@ -1,5 +1,5 @@
 #basketRecap{
-    min-height: 65vh;
+    
     & h1{
         font-family: $title-style;
         text-align: center;
@@ -38,5 +38,34 @@
                 }
             }
         }   
+    }
+    & .containNoBasket{
+        background: $purple;
+        border: 2px solid $purple-dark;
+        border-radius: 10px;
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 5%;
+        font-family: $text-style;
+        & p{
+            font-size: $text-productCard;
+        }
+        & button{
+            font-size: $text-productCard;
+            background: $purple-light;
+            border: 2px solid $purple-dark;
+            margin-top: 3%;
+            & a{
+                color: $purple-dark;
+            }
+            &:hover{
+                background: $purple-dark;
+                & a{
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
     }
 }
