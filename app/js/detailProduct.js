@@ -7,10 +7,7 @@ let product = JSON.parse(window.localStorage.getItem("productDetails"));
 * Edition de la page de détail de l'article à partir de la data
 */
 function displayDetailProduct(){
-    let pageProduct = document.getElementById("productDetailPage");
-
-    let productCard = document.createElement("section");
-        productCard.classList.add("productCard", "offset-3", "col-6");
+    let pageProduct = document.getElementById("productCard");
 
     let productTitle = document.createElement("h1");
         productTitle.innerHTML = `${product.name}`;
@@ -47,11 +44,9 @@ function displayDetailProduct(){
     }
 
 
-    productCard.append(productTitle, productImage, productPrice, productDescription, choiceLabel, colorChoice);
-    pageProduct.appendChild(productCard);
+    productCard.prepend(productTitle, productImage, productPrice, productDescription, choiceLabel, colorChoice);
 }
 
 displayDetailProduct();
 
 
-//Fonction pour ajouter au panier
