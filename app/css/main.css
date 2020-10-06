@@ -6,6 +6,10 @@ body {
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .hide {
   display: none;
 }
@@ -378,11 +382,45 @@ main #text-presentation-produit a:hover {
 }
 
 #basketRecap .row {
-  margin-bottom: 2%;
+  margin: 0% 15% 2% 15%;
+  border: 2px solid #cf8252;
+  border-radius: 10px;
 }
 
-#basketRecap .image {
-  height: 300px;
+#basketRecap .row .image {
+  max-height: 500px;
+  border-right: 2px solid #cf8252;
+  border-radius: 10px 0 0 10px;
+}
+
+#basketRecap .row .detail {
+  padding: 2%;
+}
+
+#basketRecap .row .detail h2 {
+  font-family: "Finger Paint", cursive;
+  margin-bottom: 3%;
+}
+
+#basketRecap .row .detail p {
+  font-family: "Neucha", cursive;
+  font-size: 1.15em;
+  margin-top: 2%;
+}
+
+#basketRecap .row .detail .quantityDiv {
+  width: 15%;
+  text-align: center;
+}
+
+#basketRecap .row .detail .quantityDiv p {
+  margin: 0;
+  color: #cf8252;
+}
+
+#basketRecap .row .detail .quantityDiv i {
+  font-size: 1.2em;
+  color: #cf8252;
 }
 
 /*!

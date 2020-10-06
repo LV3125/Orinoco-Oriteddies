@@ -10,17 +10,17 @@ let recapProduct = document.getElementById("basketRecap");
 */
 for(let i in basket){
     let productInfo = document.createElement("div");
-        productInfo.classList.add("row");
+        productInfo.classList.add("row", "rowProduct");
 
     let productImage = document.createElement("div");
         productImage.classList.add("image","col-4");
         productImage.src = `${basket[i].imageUrl}`;
         productImage.style.background = "url(" + productImage.src + ") no-repeat";
-        productImage.style.backgroundSize = "contain";
+        productImage.style.backgroundSize = "cover";
         productImage.style.backgroundPosition = "center";
 
     let productDetail = document.createElement("div");
-        productDetail.classList.add("col-8");
+        productDetail.classList.add("detail","col-8");
 
     let productName = document.createElement("h2");
         productName.innerText = `${basket[i].name}`;
@@ -28,15 +28,17 @@ for(let i in basket){
     let price = `${basket[i].price}`;
     let priceComa = price.slice(0,2);
     let productPriceUnique = document.createElement("p");
-        productPriceUnique.innerHTML = "Prix à l'unité: " + priceComa + "€";
+        productPriceUnique.innerHTML = "<span class='bold'>Prix à l'unité:</span> " + priceComa + "€";
 
     let quantityChoiceDiv = document.createElement("div");
+        quantityChoiceDiv.classList.add("quantityDiv")
     // Affichage du nombre d'occurence de cet objet + sous-total de cet objet
     let productQuantity = document.createElement("p");
+        productQuantity.classList.add("bold");
         productQuantity.innerHTML = "Quantité: " + `${basket[i].quantity}`;
     let subPriceUnique = document.createElement("p");
     let subPrice = `${basket[i].quantity}` * priceComa;
-        subPriceUnique.innerHTML = "Sous-total: " + subPrice + "€";
+        subPriceUnique.innerHTML = "<span class='italic'>Sous-total:</span><span class='bold'> " + subPrice + "€</span>";
 
     // Ajout de la possibilité d'ajouter ou supprimer une occurence de cet objet
     // Ajouter
@@ -53,7 +55,7 @@ for(let i in basket){
             tableOfProduct[i].quantity++;
             productQuantity.innerHTML = "Quantité: " + `${tableOfProduct[i].quantity}`;
             subPrice = `${tableOfProduct[i].quantity}` * priceComa;
-            subPriceUnique.innerHTML = "Sous-total: " + subPrice + "€";
+            subPriceUnique.innerHTML = "<span class='italic'>Sous-total:</span><span class='bold'> " + subPrice + "€</span>";
 
             //On encode en JSON le tableau qui contient les nouvelles informations
             tableOfProduct = JSON.stringify(tableOfProduct);
@@ -79,7 +81,7 @@ for(let i in basket){
                 tableOfProduct[i].quantity--;
                 productQuantity.innerHTML = "Quantité: " + `${tableOfProduct[i].quantity}`;
                 subPrice = `${tableOfProduct[i].quantity}` * priceComa;
-                subPriceUnique.innerHTML = "Sous-total: " + subPrice + "€";
+                subPriceUnique.innerHTML = "<span class='italic'>Sous-total:</span><span class='bold'> " + subPrice + "€</span>";
             }
             if(tableOfProduct[i].quantity <= 0 ){
                 //remove the item
