@@ -1,0 +1,14 @@
+#basketRecap{
+    min-height: 65vh;
+    & h1{
+        font-family: $title-style;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    & .row{
+        margin-bottom: 2%;
+    }
+    & .image{
+        height: 300px;
+    }
+}
