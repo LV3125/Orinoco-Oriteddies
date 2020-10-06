@@ -50,3 +50,44 @@ function displayDetailProduct(){
 displayDetailProduct();
 
 
+/*
+*  Fonction pour ajouter un produit au panier
+*/
+
+function addToBasket(){
+    let tableOfProducts = localStorage.getItem("productWish");
+
+    //On vérifie si la liste existe
+    if(!tableOfProducts){
+        //Si elle n'existe pas
+        tableOfProducts = [];
+        product.quantity = 1;
+        tableOfProducts.push(product);
+    }else{ 
+        //Si elle existe
+        tableOfProducts = JSON.parse(tableOfProducts);
+        console.log(tableOfProducts);
+
+        //On vérifie si le produit choisi est présent dans le tableau en comparant les id
+        if(tableOfProducts.find( choice => choice._id === product._id)){
+            //Si il existe
+            product.quantity++;
+            for(var i = 0; i < tableOfProducts.length; i++){
+                if(product._id === tableOfProducts[i]._id){
+                    tableOfProducts[i].quantity++;
+                    break;
+                }
+            }
+        }else{
+            //Si il n'existe pas
+            product.quantity = 1;
+            tableOfProducts.push(product);
+        }
+    }
+
+    //On encode le tableau au format JSON avant de l'envoyer
+    tableOfProducts = JSON.stringify(tableOfProducts);
+
+    //On renvoie le tableau au localStorage
+    localStorage.setItem("productWish", tableOfProducts);
+}
