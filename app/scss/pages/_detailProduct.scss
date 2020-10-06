@@ -24,24 +24,45 @@
         font-family: $text-style;   
     }
     & .btn{
-        background: $purple-light;
-        border: 2px solid $purple-dark;
-        margin-top: 2%;
-        font-family: $text-style;
-        letter-spacing: 3px;
-        color: $purple-dark;
-        transition: transform 0.2s ease-in-out;
-        &:hover{
-            background: $purple-dark;
+        @include buttonPageProduit;
+        &:hover i{
             color: white;
-            transform: translateY(5px);
-            & i{
-                color: white;
-            }
         }
         & i{
             color: $purple-dark;
             margin-right: 5px;
+        }
+    }
+}
+
+//FENETRE POPUP
+#popupAdd{
+    top: 20%;
+    z-index: 10;
+    text-align: center;
+    position: absolute;
+    background-color: $orange;
+    box-shadow: 1px 1px 15px $purple-dark;
+    padding: 5%;
+    font-family: $text-style;
+    font-size: $text-productCard;
+    color: white;
+    & p{
+        margin-bottom: 5%;
+        & i{
+            color: white;
+            margin-right: 15px;
+        }
+    }
+    & .btn{
+        @include buttonPageProduit;
+        margin: 0 2%;
+        & a{
+            color: $purple-dark;
+        }
+        &:hover a{
+            color: white;
+            text-decoration: none;
         }
     }
 }

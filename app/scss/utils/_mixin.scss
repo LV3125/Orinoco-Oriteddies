@@ -1,0 +1,15 @@
+//LES MIXINS
+@mixin buttonPageProduit{
+    background: $purple-light;
+    border: 2px solid $purple-dark;
+    margin-top: 2%;
+    font-family: $text-style;
+    letter-spacing: 3px;
+    color: $purple-dark;
+    transition: transform 0.2s ease-in-out;
+    &:hover{
+        background: $purple-dark;
+        color: white;
+        transform: translateY(5px);
+    }
+}

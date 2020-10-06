@@ -90,4 +90,14 @@ function addToBasket(){
 
     //On renvoie le tableau au localStorage
     localStorage.setItem("productWish", tableOfProducts);
+
+    //Fenêtre PoPup
+    let popupAdded = document.getElementById("popupAdd");
+    if(popupAdded.classList.contains("hide")){
+        popupAdded.classList.remove("hide");
+    }else{
+        popupAdded.classList.add("hide");
+    }
+    
 }
+
