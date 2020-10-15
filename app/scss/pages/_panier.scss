@@ -6,9 +6,7 @@
         margin-bottom: 5%;
     }
     & .row{
-        margin: 0% 15% 2% 15%;
-        border: 2px solid $orange;
-        border-radius: 10px;
+        @include rowBasket;
         & .image{
             max-height: 500px;
             border-right: 2px solid $orange;
@@ -39,6 +37,10 @@
             }
         }   
     }
+    & .removeIcone{
+        font-family: $text-style;
+        cursor: pointer;
+    }
     & .containNoBasket{
         background: $purple;
         border: 2px solid $purple-dark;
@@ -66,6 +68,30 @@
                     text-decoration: none;
                 }
             }
+        }
+    }
+}
+#totalBasket{
+    @include rowBasket;
+    width: 50%;
+    margin: 4% auto 0 auto;
+    padding: 2%;
+    font-family: $text-style;
+    text-align: center;
+    font-size: $total-commande;
+    & h2{
+        margin-bottom: 2%;
+    }
+    & p{
+        font-weight: bold;
+    }
+    & .btn{
+        @include buttonPageProduit;
+        border-color: $orange;
+        color: $orange;
+        font-weight: bold;
+        &:hover{
+            background: $orange;
         }
     }
 }

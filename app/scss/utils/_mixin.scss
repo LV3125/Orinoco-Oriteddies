@@ -13,3 +13,9 @@
         transform: translateY(5px);
     }
 }
+
+@mixin rowBasket{
+    margin: 0% 15% 2% 15%;
+    border: 2px solid $orange;
+    border-radius: 10px;
+}

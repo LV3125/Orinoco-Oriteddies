@@ -5,34 +5,13 @@ let basket = JSON.parse(window.localStorage.getItem("productWish"));
 
 let recapProduct = document.getElementById("basketRecap");
 
-//Fonction globale qui affiche que le panier est vide et invite à aller faire des achats sur la page du listing des produits
-function emptyBasket(){
-    let containEmptyBasket = document.createElement("div");
-        containEmptyBasket.classList.add("containNoBasket");
-    let emptyBasket = document.createElement("p");
-        emptyBasket.classList.add("noBasket");
-        emptyBasket.innerText = "Votre panier est vide!";
-    
-    let redirectionShopping = document.createElement("button");
-        redirectionShopping.classList.add("btn");
-        redirectionShopping.innerHTML = "<a href='listeProduit.html'>Commencer vos achats</a>";
-
-    containEmptyBasket.append(emptyBasket, redirectionShopping)
-    recapProduct.append(containEmptyBasket);
-}
-
-
 /*
-* Vérification de la présence de produit dans la liste de souhait de l'utilisateur
+* Si la liste contient des produits
+* Boucle for pour créer les éléments dans le DOM pour chaque élément de la liste de produits sélectionnés
 */
-if(basket.length <= 0){
-    //Si la liste est vide
-    emptyBasket();
-}else{
-    /*
-    * Si la liste contient des produits
-    * Boucle for pour créer les éléments dans le DOM pour chaque élément de la liste de produits sélectionnés
-    */
+if (basket.length > 0) {
+    document.getElementById("emptyBasket").remove();
+
     for(let i in basket){
         let productInfo = document.createElement("div");
             productInfo.classList.add("row", "rowProduct");
@@ -50,13 +29,12 @@ if(basket.length <= 0){
         let productName = document.createElement("h2");
             productName.innerText = `${basket[i].name}`;
 
-        let price = `${basket[i].price}`;
-        let priceComa = price.slice(0,2);
+        let priceComa = `${basket[i].price}` / 100;
         let productPriceUnique = document.createElement("p");
             productPriceUnique.innerHTML = "<span class='bold'>Prix à l'unité:</span> " + priceComa + "€";
 
         let quantityChoiceDiv = document.createElement("div");
-            quantityChoiceDiv.classList.add("quantityDiv")
+            quantityChoiceDiv.classList.add("quantityDiv");
         // Affichage du nombre d'occurence de cet objet + sous-total de cet objet
         let productQuantity = document.createElement("p");
             productQuantity.classList.add("bold");
@@ -86,10 +64,12 @@ if(basket.length <= 0){
                 tableOfProduct = JSON.stringify(tableOfProduct);
                 //On renvoit ce tableau dans le localStorage
                 localStorage.setItem("productWish", tableOfProduct);
+
+                window.location.reload();
             }
 
-        // Supprimer
-        let removeProduct = document.createElement("button");
+            // Supprimer
+            let removeProduct = document.createElement("button");
             removeProduct.classList.add("btn");
             removeProduct.innerHTML = "<i class='fa fa-minus-square'></i>";
             removeProduct.onclick = function(){
@@ -111,19 +91,62 @@ if(basket.length <= 0){
                 if(tableOfProduct[i].quantity <= 0 ){
                     //On supprime la ligne du produit
                     tableOfProduct.splice(i,1);
-                    recapProduct.removeChild(productInfo);
-                    //On affiche que le panier est vide
-                    emptyBasket();
                 }
                 //On encode en JSON le tableau qui contient les nouvelles informations
                 tableOfProduct = JSON.stringify(tableOfProduct);
                 //On renvoit ce tableau dans le localStorage
                 localStorage.setItem("productWish", tableOfProduct);
+
+                window.location.reload();
             }
+
+        let trashProduct = document.createElement("p");
+            trashProduct.setAttribute("id", "remove" + [i]);
+            trashProduct.innerHTML = "<i class='fa fa-trash'></i> Supprimer ce produit";
+            trashProduct.classList.add("removeIcone");
+            trashProduct.onclick = function(){
+                basket.splice(i, 1);
+                alert("Produit supprimé de votre panier");
+                localStorage.clear();
+                // Mise à jour du nouveau panier avec suppression de l'article
+                localStorage.setItem("productWish", JSON.stringify(basket));
+                //Mise à jour de la page pour affichage de la suppression au client
+                window.location.reload();
+                console.log("Produit supprimé du panier");
+            };
 
         recapProduct.append(productInfo);
         quantityChoiceDiv.append(addProduct, productQuantity, removeProduct);
-        productDetail.append(productName, productPriceUnique, quantityChoiceDiv, subPriceUnique);
+        productDetail.append(productName, productPriceUnique, quantityChoiceDiv, subPriceUnique, trashProduct);
         productInfo.append(productImage, productDetail);
+
+        console.log(basket[i]);
     }
+
+    /*
+    * Calcul total du panier
+    */
+    let totalToPay = 0;
+    for(let product in basket){
+        totalToPay += (basket[product].price * basket[product].quantity) / 100;
+    }
+    
+    let totalBasket = document.getElementById("totalBasket");
+    let totalBasketText = document.createElement("h2");
+        totalBasketText.setAttribute("class", "col-12");
+        totalBasketText.innerText = "Total de votre commande";
+
+    let totalBasketPrice = document.createElement("p");
+        totalBasketPrice.setAttribute("class", "col-12");
+        totalBasketPrice.innerHTML = totalToPay + " €";
+
+    let commandPast = document.createElement("button");
+        commandPast.setAttribute("class", "offset-4 col-4 btn");
+        commandPast.innerText = "Passer commande";
+
+    totalBasket.append(totalBasketText, totalBasketPrice, commandPast);
+    console.log(totalToPay);
+
+}else{
+    document.getElementById("totalBasket").remove();
 }
