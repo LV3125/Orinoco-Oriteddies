@@ -18,6 +18,14 @@ body {
   display: none;
 }
 
+.red {
+  color: red;
+}
+
+.erreurInput {
+  border: 2px solid red !important;
+}
+
 #menu {
   background-color: #f3ebf3;
   height: 80px;
@@ -383,9 +391,10 @@ main #text-presentation-produit a:hover {
 }
 
 #basketRecap .row {
-  margin: 0% 15% 2% 15%;
+  margin: 5% auto;
   border: 2px solid #cf8252;
   border-radius: 10px;
+  max-width: 70%;
 }
 
 #basketRecap .row .image {
@@ -465,7 +474,7 @@ main #text-presentation-produit a:hover {
 }
 
 #totalBasket {
-  margin: 0% 15% 2% 15%;
+  margin: 5% auto;
   border: 2px solid #cf8252;
   border-radius: 10px;
   width: 50%;
@@ -509,6 +518,67 @@ main #text-presentation-produit a:hover {
 
 #totalBasket .btn:hover {
   background: #cf8252;
+}
+
+#formCommandSection {
+  width: 50%;
+  margin: 5% auto;
+  border: 2px solid #cf8252;
+  border-radius: 10px;
+  padding: 3% 5%;
+  font-family: "Neucha", cursive;
+}
+
+#formCommandSection h2 {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 8%;
+}
+
+#formCommandSection .btn {
+  margin: 0% auto 5% auto;
+  background: #f3ebf3;
+  border: 2px solid #613d6a;
+  margin-top: 2%;
+  font-family: "Neucha", cursive;
+  letter-spacing: 3px;
+  color: #613d6a;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  border-color: #cf8252;
+  color: #cf8252;
+  font-weight: bold;
+}
+
+#formCommandSection .btn:hover {
+  background: #613d6a;
+  color: white;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+#formCommandSection .btn:hover {
+  background: #cf8252;
+}
+
+#formCommandSection label {
+  font-size: 1.2em;
+}
+
+#formCommandSection input {
+  border: 2px solid #cf8252;
+}
+
+#formCommandSection p {
+  font-size: 1em;
+  font-style: italic;
+}
+
+#formCommandSection span {
+  color: red;
+  font-weight: bold;
 }
 
 /*!

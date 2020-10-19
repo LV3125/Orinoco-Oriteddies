@@ -7,24 +7,26 @@ let recapProduct = document.getElementById("basketRecap");
 
 /*
 * Si la liste contient des produits
-* Boucle for pour créer les éléments dans le DOM pour chaque élément de la liste de produits sélectionnés
 */
 if (basket.length > 0) {
+    //On supprime la div qui affiche que le panier est vide
     document.getElementById("emptyBasket").remove();
-
+    /*
+    * Boucle for pour créer les éléments dans le DOM pour chaque élément de la liste de produits sélectionnés
+    */
     for(let i in basket){
         let productInfo = document.createElement("div");
             productInfo.classList.add("row", "rowProduct");
 
         let productImage = document.createElement("div");
-            productImage.classList.add("image","col-4");
+            productImage.classList.add("image","col-6");
             productImage.src = `${basket[i].imageUrl}`;
             productImage.style.background = "url(" + productImage.src + ") no-repeat";
             productImage.style.backgroundSize = "cover";
             productImage.style.backgroundPosition = "center";
 
         let productDetail = document.createElement("div");
-            productDetail.classList.add("detail","col-8");
+            productDetail.classList.add("detail","col-6");
 
         let productName = document.createElement("h2");
             productName.innerText = `${basket[i].name}`;
@@ -35,6 +37,7 @@ if (basket.length > 0) {
 
         let quantityChoiceDiv = document.createElement("div");
             quantityChoiceDiv.classList.add("quantityDiv");
+
         // Affichage du nombre d'occurence de cet objet + sous-total de cet objet
         let productQuantity = document.createElement("p");
             productQuantity.classList.add("bold");
@@ -67,7 +70,6 @@ if (basket.length > 0) {
 
                 window.location.reload();
             }
-
             // Supprimer
             let removeProduct = document.createElement("button");
             removeProduct.classList.add("btn");
@@ -100,6 +102,7 @@ if (basket.length > 0) {
                 window.location.reload();
             }
 
+        // Ajout de la possibilité d'effacer complétement un produit du panier
         let trashProduct = document.createElement("p");
             trashProduct.setAttribute("id", "remove" + [i]);
             trashProduct.innerHTML = "<i class='fa fa-trash'></i> Supprimer ce produit";
@@ -115,6 +118,7 @@ if (basket.length > 0) {
                 console.log("Produit supprimé du panier");
             };
 
+        //Insertion des éléments dans le DOM
         recapProduct.append(productInfo);
         quantityChoiceDiv.append(addProduct, productQuantity, removeProduct);
         productDetail.append(productName, productPriceUnique, quantityChoiceDiv, subPriceUnique, trashProduct);
@@ -127,10 +131,11 @@ if (basket.length > 0) {
     * Calcul total du panier
     */
     let totalToPay = 0;
+    //Boucle for qui ajoute au total du panier le sous-total par produit de la liste de souhait de l'utilisateur
     for(let product in basket){
         totalToPay += (basket[product].price * basket[product].quantity) / 100;
     }
-    
+    //Création des éléments dans le DOM
     let totalBasket = document.getElementById("totalBasket");
     let totalBasketText = document.createElement("h2");
         totalBasketText.setAttribute("class", "col-12");
@@ -142,11 +147,12 @@ if (basket.length > 0) {
 
     let commandPast = document.createElement("button");
         commandPast.setAttribute("class", "offset-4 col-4 btn");
+        commandPast.setAttribute("id", "btnToForm");
         commandPast.innerText = "Passer commande";
-
+    //Insertion des éléments dans le DOM
     totalBasket.append(totalBasketText, totalBasketPrice, commandPast);
     console.log(totalToPay);
-
+ 
 }else{
     document.getElementById("totalBasket").remove();
 }

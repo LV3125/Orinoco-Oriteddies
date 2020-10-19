@@ -44,6 +44,58 @@
                 <section id="totalBasket" class="row">
 
                 </section>
+                <section id="formCommandSection">
+                    <h2>Formulaire de commande</h2>
+                    <form action="confirmation.html" method="post" name="formCommandPast" id="formCommandPast">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="prenom">Prénom<span class="red">*</span></label>
+                                <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required />   
+                                <span id="messagePrenom"></span>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="nom">Nom<span class="red">*</span></label>
+                                <input type="text" class="form-control" id="nom" placeholder="Votre nom" required />
+                                <span id="messageNom"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="adresse">Adresse<span class="red">*</span></label>
+                                <input type="text" class="form-control" id="adresse" placeholder="Votre adresse" required />   
+                                <span id="messageAdresse"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="adresse2">Adresse (suite)</label>
+                                <input type="text" class="form-control" id="adresse2" placeholder="Complément adresse (facultatif)" /> 
+                                <span id="messageAdresseComp"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="ville">Ville<span class="red">*</span></label>
+                                <input type="text" class="form-control" id="ville" placeholder="Votre ville" required />
+                                <span id="messageVille"></span>   
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="email">Email<span class="red">*</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="Votre email" required />
+                                <span id="messageEmail"></span>   
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12"> 
+                                <button type="submit" class="btn btn-block">Passer commande</button>
+                                <button type="reset" class="btn">Effacer le formulaire</button>
+                            </div>
+                        </div>
+                        <p>*Ces champs sont obligatoires pour pouvoir passer commande</p>
+                    </form>
+                </section>
             </main>
 
             <!-- FOOTER -->
@@ -57,11 +109,12 @@
             </footer>
         </div>
         
-
+        
 
         <!-- Scripts-->
         <script src="js/utils.js"></script>
         <script src="js/panier.js"></script>
+        <script src="js/formulaire.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
