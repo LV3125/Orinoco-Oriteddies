@@ -1,0 +1,21 @@
+#confirmCommand{
+    & h1{
+        font-family: $text-style;
+        text-align: center;
+    }
+}
+#resumeCommand{
+    width: 60%;
+    padding: 2%;
+    font-family: $text-style;
+    font-size: $text-confirm;
+    text-align: center;
+    @include rowBasket;
+    border-color: $purple-dark;
+    background: $purple-light;
+    & .btn-home{
+        font-weight: bold;
+        @include buttonPageProduit;
+        margin: 2% auto;
+    }
+}

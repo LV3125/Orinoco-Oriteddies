@@ -1,54 +1,59 @@
-/**
- * Récupère les informations des ours en peluche depuis l'API
- * et les affiche grâce à la fonction displayTeddies() qui s'occupe d'afficher la liste des produits
- */
 
-askRequest('GET','http://localhost:3000/api/teddies', function(bears){
-    displayTeddies(bears);
-});
-
-/**
- * Affiche la liste des produits (ours en peluche)
- * */
+// Appel de l'Api
+const url = "http://localhost:3000/api/teddies";
+// Séléction de la balise div conteneur des produits
 const listBears = document.getElementById('fromServer');
 
-function displayTeddies(bears){
-    for(let i in bears) {
-        let productCard = document.createElement('section');
-            productCard.classList.add('row', 'product');
+//Fonction
+let request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+    let response = JSON.parse(this.responseText);
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) { 
+            let response = JSON.parse(this.responseText);                   
+            console.log(response);
+
+            function oursEnPeluche() {                                      
+                for(let i = 0; i < response.length; i++) { 
+                    let productCard = document.createElement('section');
+                        productCard.classList.add('row', 'product');
+
+                    let productLeftDiv = document.createElement('div');
+                        productLeftDiv.classList.add("col-5", "image-product")
+                        productLeftDiv.src = response[i].imageUrl;
+                        productLeftDiv.style.background = "url(" + productLeftDiv.src + ") no-repeat";
+                        productLeftDiv.style.backgroundPosition = "center";
+                        productLeftDiv.style.backgroundSize = "cover";
+
+                    let productRightDiv = document.createElement('div');
+                        productRightDiv.classList.add("col-7", "title-product");
+
+                    let productName = document.createElement('h2');
+                        productName.innerText = response[i].name;
+
+                    let productPrice = document.createElement('p');
+                        productPrice.innerHTML = response[i].price/100 + " €";
+
+                    let productDescription = document.createElement('p');
+                        productDescription.innerText = response[i].description;
+
+                    let btnProduct = document.createElement("a");
+                        btnProduct.classList.add("btn");
+                        btnProduct.textContent = "En savoir plus";
+                        btnProduct.setAttribute("href", "ficheProduit.html#" + response[i]._id);
+                        
+
+                    listBears.append(productCard);
+                    productCard.append(productLeftDiv,productRightDiv);
+                    productRightDiv.append(productName,productPrice,productDescription, btnProduct);
+                    
+                };
+            };
+            oursEnPeluche();                                               
             
-        let productLeftDiv = document.createElement('div');
-            productLeftDiv.classList.add("col-5", "image-product")
-            productLeftDiv.src = `${bears[i].imageUrl}`;
-            productLeftDiv.style.background = "url(" + productLeftDiv.src + ") no-repeat";
-            productLeftDiv.style.backgroundPosition = "center";
-            productLeftDiv.style.backgroundSize = "cover";
-        
-        let productRightDiv = document.createElement('div');
-            productRightDiv.classList.add("col-7", "title-product");
+        };
+    };
+};
+request.open("GET", url);
+request.send();
 
-        let productName = document.createElement('h2');
-            productName.innerText = `${bears[i].name}`;
-
-        let price = `${bears[i].price}`;
-        let priceComa = price.slice(0,2);
-        let productPrice = document.createElement('p');
-            productPrice.innerText = "Prix: " + priceComa + `€`;
-
-        let productDescription = document.createElement('p');
-            productDescription.innerText = `${bears[i].description}`;
-
-        let btnProduct = document.createElement("button");
-            btnProduct.classList.add("btn");
-            btnProduct.innerText = "Plus d'information";
-            //Lorsque l'on clique sur le bouton "plus d'information" création d'une entrée dans le LocalStorage qui liste les détails du produit sur lequel on clique
-            btnProduct.onclick = function OpenProductPage(){
-                window.localStorage.setItem('productDetails', JSON.stringify(bears[i]));
-                window.open("ficheProduit.html", "_self");
-            }
-
-        listBears.append(productCard);
-        productCard.append(productLeftDiv,productRightDiv);
-        productRightDiv.append(productName,productPrice,productDescription, btnProduct);
-    }
-}

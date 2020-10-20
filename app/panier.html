@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <!-- MENU / NAV -->
             <nav id="menu" class="row navbar navbar-expand">
-                <a class="navbar-brand" href="#"><img src="./img/logo.png" width="160" /></a>
+                <a class="navbar-brand" href="index.html"><img src="./img/logo.png" width="160" /></a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Accueil</a>
@@ -41,7 +41,7 @@
                         <button class="btn"><a href="listeProduit.html">Commencer vos achats</a></button>
                     </div>
                 </section>
-                <section id="totalBasket" class="row">
+                <section id="totalBasket">
 
                 </section>
                 <section id="formCommandSection">
@@ -51,40 +51,40 @@
                             <div class="form-group col-6">
                                 <label for="prenom">Prénom<span class="red">*</span></label>
                                 <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required />   
-                                <span id="messagePrenom"></span>
+                                <span class="spanErreur" id="messagePrenom"></span>
                             </div>
                             <div class="form-group col-6">
                                 <label for="nom">Nom<span class="red">*</span></label>
                                 <input type="text" class="form-control" id="nom" placeholder="Votre nom" required />
-                                <span id="messageNom"></span>
+                                <span class="spanErreur" id="messageNom"></span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="adresse">Adresse<span class="red">*</span></label>
                                 <input type="text" class="form-control" id="adresse" placeholder="Votre adresse" required />   
-                                <span id="messageAdresse"></span>
+                                <span class="spanErreur" id="messageAdresse"></span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="adresse2">Adresse (suite)</label>
                                 <input type="text" class="form-control" id="adresse2" placeholder="Complément adresse (facultatif)" /> 
-                                <span id="messageAdresseComp"></span>
+                                <span class="spanErreur" id="messageAdresseComp"></span>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="ville">Ville<span class="red">*</span></label>
                                 <input type="text" class="form-control" id="ville" placeholder="Votre ville" required />
-                                <span id="messageVille"></span>   
+                                <span class="spanErreur" id="messageVille"></span>   
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label for="email">Email<span class="red">*</span></label>
                                 <input type="email" class="form-control" id="email" placeholder="Votre email" required />
-                                <span id="messageEmail"></span>   
+                                <span class="spanErreur" id="messageEmail"></span>   
                             </div>
                         </div>
                         <div class="form-row">
@@ -112,7 +112,6 @@
         
 
         <!-- Scripts-->
-        <script src="js/utils.js"></script>
         <script src="js/panier.js"></script>
         <script src="js/formulaire.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

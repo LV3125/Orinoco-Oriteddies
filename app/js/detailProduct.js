@@ -1,103 +1,124 @@
-/*
-* Récupération des données dans le LocalStorage
-*/
-let product = JSON.parse(window.localStorage.getItem("productDetails"));
+// Appel de l'Api
+const url = "http://localhost:3000/api/teddies";
 
-/*
-* Edition de la page de détail de l'article à partir de la data
-*/
-function displayDetailProduct(){
-    let pageProduct = document.getElementById("productCard");
+// Récupération de l'id via l'URL
+const hash = window.location.hash;
+const idHash = hash.replace('#', '/');
+const nomUrl = url + idHash;
 
-    let productTitle = document.createElement("h1");
-        productTitle.innerHTML = `${product.name}`;
+// Balise div séléctionner 
+const productCard = document.getElementById('productCard');
 
-    let productImage = document.createElement("div");
-        productImage.classList.add("productImagePageDetail");
-        productImage.src = `${product.imageUrl}`;
-        productImage.style.background = "url(" + productImage.src + ") no-repeat";
-        productImage.style.backgroundPosition = "center";
-        productImage.style.backgroundSize = "contain";
+// Requete + fonction
+let request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+    let response = JSON.parse(this.responseText);
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) { //Vérification si c'est bon
+            let response = JSON.parse(this.responseText);                   //Récupération des données en JSON.parse
+            console.log(response);
 
-    let price = `${product.price}`;
-    let priceComa = price.slice(0,2);
-    let productPrice = document.createElement("p");
-        productPrice.innerHTML = "<span class='bold'>Prix</span><br/>" + priceComa + "€";
+            function ours() {
 
-    let productDescription = document.createElement("p");
-        productDescription.innerHTML = `${product.description}`;
+                // Sélection des éléments
+                let productTitle = document.createElement("h1");
+                    productTitle.textContent = response.name;
 
-    //Ajout du choix de couleur du produit
-    let colorTeddy = product.colors;
-    let choiceLabel = document.createElement("label");
-         choiceLabel.innerText = "Choisissez une couleur: ";
-    let colorChoice = document.createElement("select");
-        colorChoice.classList.add("bold");
+                let productImage = document.createElement("div");
+                    productImage.classList.add("productImagePageDetail");
+                    productImage.src = response.imageUrl;
+                    productImage.style.background = "url(" + productImage.src + ") no-repeat";
+                    productImage.style.backgroundPosition = "center";
+                    productImage.style.backgroundSize = "contain";
 
-    //Ajout des différentes options : choix de couleur
-    for (var i = 0; i < colorTeddy.length; i++) {
-        var color = document.createElement("option");
-        color.classList.add("selectItems", "bold");
-        color.value = colorTeddy[i];
-        color.text = colorTeddy[i];
-        colorChoice.appendChild(color);
-    }
+                let productPrice = document.createElement("p");
+                    productPrice.textContent = response.price/100 + " €";
 
+                let productDescription = document.createElement("p");
+                    productDescription.innerHTML = response.description;
 
-    productCard.prepend(productTitle, productImage, productPrice, productDescription, choiceLabel, colorChoice);
-}
+                let colorDiv = document.createElement("div");
 
-displayDetailProduct();
+                let choiceLabel = document.createElement("label");
+                    choiceLabel.innerText = "Choisissez une couleur: ";
 
+                let colorsSelector = document.createElement("select");
+                    colorsSelector.setAttribute("class", "color_ours");
+                let colors = response.colors;
+                for (let i = 0; i < colors.length; i++) {
+                    let myOption = document.createElement('option');
+                    myOption.textContent = colors[i];
+                    myOption.setAttribute("value", colors[i]);
+                    colorsSelector.appendChild(myOption);                
+                };
 
-/*
-*  Fonction pour ajouter un produit au panier
-*/
+                const mySubmit = document.querySelector('.btn_add');
+                
+                colorDiv.prepend(choiceLabel, colorsSelector);
+                productCard.prepend(productTitle, productImage, productPrice, productDescription, colorDiv);
+                
+                // Stockage des informations dans le localStorage
+                mySubmit.addEventListener('click', function (event) {
+                    let objJson = {
+                        id: response._id,
+                        name: response.name,
+                        image: response.imageUrl,
+                        colors: colorsSelector.value,
+                        price: response.price,
+                        qte: 1
+                    };
+                    
+                    let tableOfProducts = localStorage.getItem("obj");
 
-function addToBasket(){
-    let tableOfProducts = localStorage.getItem("productWish");
+                    //On vérifie si la liste existe
+                    if(!tableOfProducts){
+                        //Si elle n'existe pas
+                        tableOfProducts = [];
+                        objJson.qte = 1;
+                        tableOfProducts.push(objJson);
+                    }else{ 
+                        //Si elle existe
+                        tableOfProducts = JSON.parse(tableOfProducts);
+                        console.log(tableOfProducts);
 
-    //On vérifie si la liste existe
-    if(!tableOfProducts){
-        //Si elle n'existe pas
-        tableOfProducts = [];
-        product.quantity = 1;
-        tableOfProducts.push(product);
-    }else{ 
-        //Si elle existe
-        tableOfProducts = JSON.parse(tableOfProducts);
-        console.log(tableOfProducts);
+                        //On vérifie si le produit choisi est présent dans le tableau en comparant les id
+                        if(tableOfProducts.find( choice => choice.id === objJson.id &&  choice.colors === objJson.colors)){
+                            //Si il existe
+                            objJson.qte++;
+                            for(var i = 0; i < tableOfProducts.length; i++){
+                                if(objJson.id === tableOfProducts[i].id && objJson.colors === tableOfProducts[i].colors){
+                                    tableOfProducts[i].qte++;
+                                    break;
+                                }
+                            }
+                        }else{
+                            //Si il n'existe pas
+                            objJson.qte = 1;
+                            tableOfProducts.push(objJson);
+                        }
+                    }
 
-        //On vérifie si le produit choisi est présent dans le tableau en comparant les id
-        if(tableOfProducts.find( choice => choice._id === product._id)){
-            //Si il existe
-            product.quantity++;
-            for(var i = 0; i < tableOfProducts.length; i++){
-                if(product._id === tableOfProducts[i]._id){
-                    tableOfProducts[i].quantity++;
-                    break;
-                }
-            }
-        }else{
-            //Si il n'existe pas
-            product.quantity = 1;
-            tableOfProducts.push(product);
-        }
-    }
+                    //On encode le tableau au format JSON avant de l'envoyer
+                    tableOfProducts = JSON.stringify(tableOfProducts);
 
-    //On encode le tableau au format JSON avant de l'envoyer
-    tableOfProducts = JSON.stringify(tableOfProducts);
+                    //On renvoie le tableau au localStorage
+                    localStorage.setItem("obj", tableOfProducts);
 
-    //On renvoie le tableau au localStorage
-    localStorage.setItem("productWish", tableOfProducts);
+                    
+                    //Fenêtre PoPup
+                    let popupAdded = document.getElementById("popupAdd");
+                    if(popupAdded.classList.contains("hide")){
+                        popupAdded.classList.remove("hide");
+                    }else{
+                        popupAdded.classList.add("hide");
+                    }
+                });
+            };         
+            ours();
+        };
+    };
+};
+request.open("GET", nomUrl);
+request.send();
 
-    //Fenêtre PoPup
-    let popupAdded = document.getElementById("popupAdd");
-    if(popupAdded.classList.contains("hide")){
-        popupAdded.classList.remove("hide");
-    }else{
-        popupAdded.classList.add("hide");
-    }
-    
-}
 

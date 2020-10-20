@@ -1,19 +1,19 @@
 function askRequest(method, url, callback, data){
-    //Création d'une variable à laquelle on assigne une nouvelle requête
-    let request = new XMLHttpRequest(); //initialise un objet
-
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    let request = new XMLHttpRequest(); //objet
+    
     request.onreadystatechange = function(){
-        if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+        if(this.readyState == XMLHttpRequest.DONE && [200, 201].indexOf(this.status) !== false){
             callback(JSON.parse(this.responseText, this.status));
         }
-    }
-
-    //Ouvre et envoi une nouvelle requête au serveur
+    };
+    // Open a new connection, using the GET request on the URL endpoint
     request.open(method, url);
     request.setRequestHeader("Content-Type", "application/json");
-    if(method == "POST"){
+    if(method == 'POST'){
         request.send(JSON.stringify(data));
     }else{
         request.send();
     }
+  
 }

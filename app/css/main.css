@@ -194,7 +194,7 @@ main #text-presentation-produit a:hover {
 }
 
 #productPage .product .title-product {
-  padding: 5% 0%;
+  padding: 5% 2%;
   text-align: center;
 }
 
@@ -419,7 +419,6 @@ main #text-presentation-produit a:hover {
 }
 
 #basketRecap .row .detail .quantityDiv {
-  width: 15%;
   text-align: center;
 }
 
@@ -579,6 +578,46 @@ main #text-presentation-produit a:hover {
 #formCommandSection span {
   color: red;
   font-weight: bold;
+}
+
+#confirmCommand h1 {
+  font-family: "Neucha", cursive;
+  text-align: center;
+}
+
+#resumeCommand {
+  width: 60%;
+  padding: 2%;
+  font-family: "Neucha", cursive;
+  font-size: 1.3em;
+  text-align: center;
+  margin: 5% auto;
+  border: 2px solid #cf8252;
+  border-radius: 10px;
+  border-color: #613d6a;
+  background: #f3ebf3;
+}
+
+#resumeCommand .btn-home {
+  font-weight: bold;
+  background: #f3ebf3;
+  border: 2px solid #613d6a;
+  margin-top: 2%;
+  font-family: "Neucha", cursive;
+  letter-spacing: 3px;
+  color: #613d6a;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+  margin: 2% auto;
+}
+
+#resumeCommand .btn-home:hover {
+  background: #613d6a;
+  color: white;
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
 }
 
 /*!
