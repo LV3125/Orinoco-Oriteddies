@@ -38,6 +38,7 @@ body {
   text-align: center;
   margin-left: 50px;
   margin-right: 30px;
+  margin-bottom: 5px;
   color: #613d6a;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -203,6 +204,10 @@ main #text-presentation-produit a:hover {
   }
 }
 
+#productPage {
+  margin-top: 160px;
+}
+
 #productPage h1 {
   text-align: center;
   font-family: "Finger Paint", cursive;
@@ -270,34 +275,13 @@ main #text-presentation-produit a:hover {
   display: none;
 }
 
-#productPage #product1 .image-product {
-  background: url("http://localhost:3000/images/teddy_1.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-#productPage #product2 .image-product {
-  background: url("http://localhost:3000/images/teddy_2.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-#productPage #product3 .image-product {
-  background: url("http://localhost:3000/images/teddy_3.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-#productPage #product4 .image-product {
-  background: url("http://localhost:3000/images/teddy_4.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-#productPage #product5 .image-product {
-  background: url("http://localhost:3000/images/teddy_5.jpg") no-repeat;
-  background-position: center;
-  background-size: cover;
+@media all and (max-width: 1000px) {
+  #productPage h1 {
+    margin-bottom: 30px;
+  }
+  #productPage .product {
+    margin: 8% 0%;
+  }
 }
 
 #productCard {

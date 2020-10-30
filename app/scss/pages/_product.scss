@@ -1,5 +1,6 @@
 // PRODUCTS PAGE
 #productPage{
+    margin-top: 160px;
     & h1{
         text-align: center;
         font-family: $title-style;
@@ -52,39 +53,16 @@
     & .informations{
         display: none;
     }
-    & #product1{
-        & .image-product{
-            background: url("http://localhost:3000/images/teddy_1.jpg") no-repeat;
-            background-position: center;
-            background-size: cover;
+}
+
+@include responsive(tab-land){
+    #productPage{
+        & h1{
+            margin-bottom: 30px;
+        }
+        & .product{
+            margin: 8% 0%;
         }
     }
-    & #product2{ 
-        & .image-product{
-            background: url("http://localhost:3000/images/teddy_2.jpg") no-repeat;
-            background-position: center;
-            background-size: cover;
-        }
-     }
-     & #product3{
-        & .image-product{
-            background: url("http://localhost:3000/images/teddy_3.jpg") no-repeat;
-            background-position: center;
-            background-size: cover;
-        }
-     }
-     & #product4{
-        & .image-product{
-            background: url("http://localhost:3000/images/teddy_4.jpg") no-repeat;
-            background-position: center;
-            background-size: cover;
-        }
-     }
-     & #product5{ 
-        & .image-product{
-            background: url("http://localhost:3000/images/teddy_5.jpg") no-repeat;
-            background-position: center;
-            background-size: cover;
-        }
-     }
+    
 }
