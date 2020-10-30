@@ -23,7 +23,6 @@ let formEmail = document.getElementById("email");
 
 //Récupération des span pour afficher les erreurs pour chaque input
 let spanErreur = document.getElementsByClassName("spanErreur");
-console.log(spanErreur);
 let erreurPrenom = document.getElementById("messagePrenom");
 let erreurNom = document.getElementById("messageNom");
 let erreurAdresse = document.getElementById("messageAdresse");
