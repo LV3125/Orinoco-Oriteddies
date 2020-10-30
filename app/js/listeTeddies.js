@@ -5,55 +5,69 @@ const url = "http://localhost:3000/api/teddies";
 const listBears = document.getElementById('fromServer');
 
 //Fonction
-let request = new XMLHttpRequest();
-request.onreadystatechange = function() {
-    if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-    let response = JSON.parse(this.responseText);
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) { 
-            let response = JSON.parse(this.responseText);                   
-            console.log(response);
+let catchError = e => {
+    console.error("Erreur Ajax:" + e);
+}
 
-            function oursEnPeluche() {                                      
-                for(let i = 0; i < response.length; i++) { 
-                    let productCard = document.createElement('section');
-                        productCard.classList.add('row', 'product');
+let getTeddies = url => {
+    return new Promise(function(resolve, reject){
+        let request = new XMLHttpRequest();
+            request.open("GET", url);
+            request.onreadystatechange = function(){
+                if(request.readyState == 4){
+                    if(request.status == 200){
+                        resolve(request.responseText);
+                    }else{
+                        reject(request);
+                    }
+                }
+            }
+            request.send();
+    });
+}
 
-                    let productLeftDiv = document.createElement('div');
-                        productLeftDiv.classList.add("col-5", "image-product")
-                        productLeftDiv.src = response[i].imageUrl;
-                        productLeftDiv.style.background = "url(" + productLeftDiv.src + ") no-repeat";
-                        productLeftDiv.style.backgroundPosition = "center";
-                        productLeftDiv.style.backgroundSize = "cover";
+getTeddies(url).then(response => {
+    let teddies = JSON.parse(response);
+    console.log(teddies);
+    createListTeddies(teddies);
+}).catch(catchError)
+.then(function(){
+    console.log("Fin des requêtes Ajax");
+});
 
-                    let productRightDiv = document.createElement('div');
-                        productRightDiv.classList.add("col-7", "title-product");
+//Fonction globale pour créer la liste des ours en peluche présent sur l'API
+function createListTeddies(teddies){
+    for(let i = 0; i < teddies.length; i++) { 
+        let productCard = document.createElement('section');
+            productCard.classList.add('row', 'product');
 
-                    let productName = document.createElement('h2');
-                        productName.innerText = response[i].name;
+        let productLeftDiv = document.createElement('div');
+            productLeftDiv.classList.add("col-5", "image-product")
+            productLeftDiv.src = teddies[i].imageUrl;
+            productLeftDiv.style.background = "url(" + productLeftDiv.src + ") no-repeat";
+            productLeftDiv.style.backgroundPosition = "center";
+            productLeftDiv.style.backgroundSize = "cover";
 
-                    let productPrice = document.createElement('p');
-                        productPrice.innerHTML = response[i].price/100 + " €";
+        let productRightDiv = document.createElement('div');
+            productRightDiv.classList.add("col-7", "title-product");
 
-                    let productDescription = document.createElement('p');
-                        productDescription.innerText = response[i].description;
+        let productName = document.createElement('h2');
+            productName.innerText = teddies[i].name;
 
-                    let btnProduct = document.createElement("a");
-                        btnProduct.classList.add("btn");
-                        btnProduct.textContent = "En savoir plus";
-                        btnProduct.setAttribute("href", "ficheProduit.html#" + response[i]._id);
-                        
+        let productPrice = document.createElement('p');
+            productPrice.innerHTML = teddies[i].price/100 + " €";
 
-                    listBears.append(productCard);
-                    productCard.append(productLeftDiv,productRightDiv);
-                    productRightDiv.append(productName,productPrice,productDescription, btnProduct);
-                    
-                };
-            };
-            oursEnPeluche();                                               
+        let productDescription = document.createElement('p');
+            productDescription.innerText = teddies[i].description;
+
+        let btnProduct = document.createElement("a");
+            btnProduct.classList.add("btn");
+            btnProduct.textContent = "En savoir plus";
+            btnProduct.setAttribute("href", "ficheProduit.html#" + teddies[i]._id);
             
-        };
-    };
-};
-request.open("GET", url);
-request.send();
 
+        listBears.append(productCard);
+        productCard.append(productLeftDiv,productRightDiv);
+        productRightDiv.append(productName,productPrice,productDescription, btnProduct);
+    };
+}

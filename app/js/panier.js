@@ -7,6 +7,7 @@ let total = 0;
 let objLinea = localStorage.getItem("obj");
 let commande = JSON.parse(objLinea);
 
+
 // Fonction d'intégration des élèments dans le tableau de notre panier
 function commandeOursEnPeluche() {
     if (commande && commande.length > 0) {

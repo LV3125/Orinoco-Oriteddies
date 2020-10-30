@@ -2,6 +2,7 @@
 const myReponse = JSON.parse(localStorage.getItem("commande"));
 const myTotal = JSON.parse(localStorage.getItem("total"));
 console.log(myReponse);
+console.log("Numéro de commande: " + myReponse.orderId);
 
 let commandeResume = document.getElementById("resumeCommand");
 

@@ -1,5 +1,3 @@
-
-
 const myButtonSubmit = document.getElementById('btnToForm');
 
 let formCommandSection = document.getElementById("formCommandSection");
@@ -133,25 +131,37 @@ form.addEventListener("submit", (event) => {
         // Ajout des données de contact et produit dans data
         let dataPanier = { contact, products };
 
-        // Création de la methode 
-        function reqToServer(){
-            const req = new XMLHttpRequest;
-              req.open("POST", "http://localhost:3000/api/teddies/order");
-              req.setRequestHeader("Content-Type", "application/json");
-              req.send(JSON.stringify(dataPanier));
-              req.onreadystatechange = function() {
-                if (this.readyState == XMLHttpRequest.DONE && this.status == 201) {
-                    let response = JSON.parse(this.responseText);
-                    console.log(response);
-                    console.log("Numéro de commande: " + response.orderId);
-                    let myReponse = JSON.stringify(response);
-                    localStorage.setItem("commande", myReponse);
-                    localStorage.removeItem("obj");
-                    window.location.href = "confirmation.html";
-                }
-            };
+        //Promesse pour créer la méthode qui envoie les données au serveur
+        let reqToServer = url => {
+            return new Promise(function(resolve, reject){
+                let req = new XMLHttpRequest();
+                    req.open("POST", url);
+                    req.setRequestHeader("Content-Type", "application/json");
+                    req.send(JSON.stringify(dataPanier));
+                    req.onreadystatechange = function() {
+                        if(req.readyState == XMLHttpRequest.DONE){
+                            if(req.status == 201){
+                                resolve(req.responseText);
+                            }else{
+                                reject(req);
+                            }
+                        }
+                    }
+            });
         }
-        reqToServer();
+
+        reqToServer("http://localhost:3000/api/teddies/order").then(function(resp){
+            let response = JSON.parse(resp);
+            console.log(response);
+            let myReponse = JSON.stringify(response);
+            localStorage.setItem("commande", myReponse);
+            localStorage.removeItem("obj");
+            window.location.href = "confirmation.html";
+        }).catch(function(error){
+            console.error(error);
+        }).then(function(){
+            console.log("Fin des requêtes Ajax");
+        })
     }else{
         console.log("Il y a une erreur dans le formulaire");
     };
