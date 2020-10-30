@@ -1,39 +1,43 @@
 // DETAILS PRODUCT PAGE
-#productCard{
-    padding: 3% 0%;
-    text-align: center;
-    border: 2px solid $purple-dark;
-    border-radius: 10px;
-    box-shadow: 1px 1px 15px $purple-dark;
-    & h1{
-        font-family: $title-style;
-        margin-bottom: 5%;
-    }
-    & .productImagePageDetail{
-        height: 400px;
-    }
-    & p, label{
-        font-family: $text-style;
-        font-size: $text-productCard;
-        margin: 2% 2%;
-        & span{
-            font-size: $price-label;
+#productDetailPage{
+    padding-top: 15vh;
+    & #productCard{
+        padding: 3% 0%;
+        text-align: center;
+        border: 2px solid $purple-dark;
+        border-radius: 10px;
+        box-shadow: 1px 1px 15px $purple-dark;
+        & h1{
+            font-family: $title-style;
+            margin-bottom: 5%;
         }
-    }
-    & select{
-        font-family: $text-style;   
-    }
-    & .btn{
-        @include buttonPageProduit;
-        &:hover i{
-            color: white;
+        & .productImagePageDetail{
+            height: 400px;
         }
-        & i{
-            color: $purple-dark;
-            margin-right: 5px;
+        & p, label{
+            font-family: $text-style;
+            font-size: $text-productCard;
+            margin: 2% 2%;
+            & span{
+                font-size: $price-label;
+            }
+        }
+        & select{
+            font-family: $text-style;   
+        }
+        & .btn{
+            @include buttonPageProduit;
+            &:hover i{
+                color: white;
+            }
+            & i{
+                color: $purple-dark;
+                margin-right: 5px;
+            }
         }
     }
 }
+
 
 //FENETRE POPUP
 #popupAdd{
@@ -66,3 +70,5 @@
         }
     }
 }
+
+

@@ -284,7 +284,11 @@ main #text-presentation-produit a:hover {
   }
 }
 
-#productCard {
+#productDetailPage {
+  padding-top: 15vh;
+}
+
+#productDetailPage #productCard {
   padding: 3% 0%;
   text-align: center;
   border: 2px solid #613d6a;
@@ -293,30 +297,30 @@ main #text-presentation-produit a:hover {
           box-shadow: 1px 1px 15px #613d6a;
 }
 
-#productCard h1 {
+#productDetailPage #productCard h1 {
   font-family: "Finger Paint", cursive;
   margin-bottom: 5%;
 }
 
-#productCard .productImagePageDetail {
+#productDetailPage #productCard .productImagePageDetail {
   height: 400px;
 }
 
-#productCard p, #productCard label {
+#productDetailPage #productCard p, #productDetailPage #productCard label {
   font-family: "Neucha", cursive;
   font-size: 1.4em;
   margin: 2% 2%;
 }
 
-#productCard p span, #productCard label span {
+#productDetailPage #productCard p span, #productDetailPage #productCard label span {
   font-size: 1.5em;
 }
 
-#productCard select {
+#productDetailPage #productCard select {
   font-family: "Neucha", cursive;
 }
 
-#productCard .btn {
+#productDetailPage #productCard .btn {
   background: #f3ebf3;
   border: 2px solid #613d6a;
   margin-top: 2%;
@@ -329,18 +333,18 @@ main #text-presentation-produit a:hover {
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
-#productCard .btn:hover {
+#productDetailPage #productCard .btn:hover {
   background: #613d6a;
   color: white;
   -webkit-transform: translateY(5px);
           transform: translateY(5px);
 }
 
-#productCard .btn:hover i {
+#productDetailPage #productCard .btn:hover i {
   color: white;
 }
 
-#productCard .btn i {
+#productDetailPage #productCard .btn i {
   color: #613d6a;
   margin-right: 5px;
 }
