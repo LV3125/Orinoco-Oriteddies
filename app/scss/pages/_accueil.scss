@@ -1,18 +1,15 @@
 // SECTION PRESENTATION PRODUIT
 main{
-    position: relative;
-    top: 160px;
-    padding-bottom: 180px;
+    margin: 80px 0px;
     & #image-presentation-produit{
         background-image: url("../img/bear-produit.jpg") ;
         background-size: cover;
         background-position: bottom;
         margin-right: 20px;
-        height: 300px;
+        height: auto;
     }
     & #text-presentation-produit{
-        height: 300px;
-        margin-left: 20px;
+        margin-bottom: 20px;
         font-family: $text-style;
         font-size: $accueil-text;
         letter-spacing: 0.1em;
@@ -35,6 +32,32 @@ main{
                 color: $purple-light;
                 background-color: $purple-dark;
                 margin-left: 20px;
+            }
+        }
+    }
+}
+
+@include responsive(phone){
+    main{
+        & #image-presentation-produit{
+            background-position: left;
+        }
+        & p, a{
+            font-size: 0.8em;
+        }
+    }
+}
+
+@include responsive(tab-land){
+    main{
+        & #image-presentation-produit{
+            height: 300px;
+        }
+        & #text-presentation-produit{
+            margin-top: 5%;
+            text-align: center;
+            & p{
+                text-align: left;
             }
         }
     }
