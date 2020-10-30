@@ -127,6 +127,7 @@ function detailProduct(teddy){
         let popupAdded = document.getElementById("popupAdd");
         if(popupAdded.classList.contains("hide")){
             popupAdded.classList.remove("hide");
+            document.body.style.overflow = "hidden";
         }else{
             popupAdded.classList.add("hide");
         }
