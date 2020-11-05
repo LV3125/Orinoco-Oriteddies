@@ -4,7 +4,7 @@
         <!-- MetaTag obligatoire -->
         <meta charset="utf-8" />
         <title>Oriteddies -Le panier</title>
-        <meta name="description" content="Bienvenue sur la boutique en ligne Oriteddies, boutique de l'entreprise Orinoco spécilisée dans la vente d'ours en peluche fait main. Doux et réconfortant, venez découvrir notre gamme de peluches." />
+        <meta name="description" content="Vous y êtes presque. Plus qu'une étape pour retrouver votre nouvel ami. Orinoco / Oriteddies est heureux que vous ayez trouver votre bohneur. N'hésitez pas à parcourir à nouveau notre gamme d'ours en peluches fait main !" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
         <!-- FONTS -->
@@ -40,17 +40,23 @@
                   </nav>
             </div>
 
+            <!-- MAIN / Partie principale 
+            Le panier est généré par le script JavaScript grâce au localStorage
+            -->
             <main>
                 <section id="basketRecap">
                     <h1>Votre Panier</h1>
+                    <!-- Lorsque le panier est vide -->
                     <div id="emptyBasket" class="containNoBasket">
                         <p class="noBasket">Votre panier est vide</p>
                         <button class="btn"><a href="listeProduit.html">Commencer vos achats</a></button>
                     </div>
                 </section>
+                <!-- Lorsqu'il y a des articles dans le panier -->
                 <section id="totalBasket">
 
                 </section>
+                <!-- Formulaire de contact pour passer commande -->
                 <section id="formCommandSection">
                     <h2>Formulaire de commande</h2>
                     <form action="confirmation.html" method="post" name="formCommandPast" id="formCommandPast">
@@ -118,7 +124,7 @@
         
         
 
-        <!-- Scripts-->
+        <!-- SCRIPT -->
         <script src="js/panier.js"></script>
         <script src="js/formulaire.js"></script>
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
