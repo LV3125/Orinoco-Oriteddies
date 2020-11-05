@@ -1,4 +1,6 @@
-// DETAILS PRODUCT PAGE
+/* PAGE DETAIL PRODUIT 
+* Les styles css pour la page de détail du produit sur lequel l'utilisateur souhaite avoir plus d'informations
+*/
 #productDetailPage{
     padding-top: 15vh;
     & #productCard{
@@ -16,17 +18,17 @@
         }
         & p, label{
             font-family: $text-style;
-            font-size: $text-productCard;
+            font-size: $text;
             margin: 2% 2%;
             & span{
-                font-size: $price-label;
+                font-size: $product-title;
             }
         }
         & select{
             font-family: $text-style;   
         }
         & .btn{
-            @include buttonPageProduit;
+            @include buttonPageProduit; // insertion de la mixin 'buttonPageProduit' pour éviter la duplication d'un même code
             &:hover i{
                 color: white;
             }
@@ -38,6 +40,10 @@
     }
 }
 
+/*
+* RESPONSIVE
+* Les styles lorsque l'on se trouve sur un format portable
+*/
 @include responsive(sm){
     #productDetailPage{
         & #productCard{
@@ -52,7 +58,10 @@
 }
 
 
-//FENETRE POPUP
+/*
+* FENETRE POPUP
+* Les styles de la fenêtre qui apparait lorsque l'on ajoute un produit au panier
+*/
 #popupAdd{
     z-index: 99;
     height: 100%;
@@ -64,7 +73,7 @@
     box-shadow: 1px 1px 15px $purple-dark;
     padding: 5%;
     font-family: $text-style;
-    font-size: $text-productCard;
+    font-size: $text;
     color: white;
     & p{
         margin-bottom: 5%;
@@ -74,7 +83,7 @@
         }
     }
     & .btn{
-        @include buttonPageProduit;
+        @include buttonPageProduit; // insertion de la mixin 'buttonPageProduit' pour éviter la duplication d'un même code
         margin: 2% 2%;
         & a{
             color: $purple-dark;

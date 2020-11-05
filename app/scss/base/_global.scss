@@ -1,4 +1,6 @@
-//GLOBAL CSS
+/* GLOBAL CSS
+* Les styles css globaux qui peuvent être présent sur l'ensemble du site Orinoco-Oriteddies
+*/
 html{
     position: relative;
     min-height: 100%;
@@ -16,6 +18,10 @@ html{
     color: red;
 }
 
+/*
+* Style d'erreur pour le formulaire de contact
+* Style appelé grâce au script JavaScript lorsqu'une erreur d'entrée de données est détecté
+*/
 .erreurInput{
     border: 2px solid red !important;
 }

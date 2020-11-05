@@ -1,3 +1,6 @@
+/* PAGE CONFIRMATION 
+* Les styles css pour la page confirmation après le passage de la commande
+*/
 #confirmCommand{
     margin: 180px 0;
     & h1{
@@ -9,25 +12,29 @@
     width: 60%;
     padding: 2%;
     font-family: $text-style;
-    font-size: $text-confirm;
+    font-size: $text;
     text-align: center;
-    @include rowBasket;
+    @include rowBasket; // insertion de la mixin 'rowBasket' pour éviter la duplication d'un même code
     border-color: $purple-dark;
     background: $purple-light;
     & .btn-home{
         font-weight: bold;
-        @include buttonPageProduit;
+        @include buttonPageProduit; // insertion de la mixin 'buttonPageProduit' pour éviter la duplication d'un même code
         margin: 2% auto;
     }
 }
 
+/*
+* RESPONSIVE
+* Les styles lorsque l'on se trouve sur un format portable
+*/
 @include responsive(sm){
     #confirmCommand{
         margin: 150px 0;
     }
     #resumeCommand{
         width: 90%;
-        font-size: $product-h2;
+        font-size: $product-title;
         margin-bottom: 200px;
     }
 }

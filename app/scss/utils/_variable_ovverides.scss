@@ -1,4 +1,9 @@
-// COLORS
+/*
+* LES VARIABLES
+* Ensembles des variables appelées dans les styles css
+*/
+
+// Couleurs
 $black: #000;
 $purple-light: #f3ebf3;
 $purple-dark: #613d6a;
@@ -6,24 +11,14 @@ $orange: #cf8252;
 $purple-grey: #8c7c8c;
 $purple: #b49eb0;
 
-// SIZES TEXT
-// Taille de font pour les éléments de la page d'accueil
-$menu-item-size: 1.3em;
+/*
+* Tailles de polices d'écritures
+*/
 $accueil-h1: 4em;
 $accueil-soustitre: 2em;
-$accueil-text: 1.3em;
-$footer: 1em;
-//Taille de font pour les éléments de la page produit
-$product-h2: 1.5em;
-$product-name: 1.3em;
-$product-text: 1.15em;
-//Taille de font pour les éléments de la page détail produit
-$price-label: 1.5em;
-$text-productCard: 1.4em;
-//Taille de font pour la page panier
-$total-commande: 1.8em;
 $form-title: 2.2em;
-$little-text: 1em;
-$label: 1.2em;
-//Taille de font pour la page de confirmation
-$text-confirm: 1.3em;
+$product-title: 1.5em; //$product-title et price-label
+$text-big: 1.8em; //total-commande
+$text: 1.4em; //accueil-text, product-name, text-productCard, text-confirm
+$text-little: 1.3em; //$text-little, product-text, $text-little
+$normal: 1em; //little-text et footer

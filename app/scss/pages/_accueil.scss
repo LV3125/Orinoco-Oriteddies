@@ -1,4 +1,6 @@
-// SECTION PRESENTATION PRODUIT
+/* MAIN 
+* Les styles css pour la partie main de la page d'accueil qui invite l'utilisateur à aller sur la page qui liste les produits
+*/
 main{
     margin: 80px 0px 150px 0px;
     & #image-presentation-produit{
@@ -11,7 +13,7 @@ main{
     & #text-presentation-produit{
         margin-bottom: 20px;
         font-family: $text-style;
-        font-size: $accueil-text;
+        font-size: $text;
         letter-spacing: 0.1em;
         & h2{
             font-family: $title-style;
@@ -37,6 +39,10 @@ main{
     }
 }
 
+/*
+* RESPONSIVE
+* Les styles lorsque l'on se trouve sur un format portable
+*/
 @include responsive(sm){
     main{
         & #image-presentation-produit{
@@ -48,6 +54,9 @@ main{
     }
 }
 
+/*
+* Les styles lorsque l'on se trouve sur un format tablette
+*/
 @include responsive(md){
     main{
         & #image-presentation-produit{

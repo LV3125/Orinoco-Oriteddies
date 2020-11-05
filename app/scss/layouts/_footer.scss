@@ -1,4 +1,6 @@
-// FOOTER
+/* FOOTER
+* Les styles css pour le footer commun à toutes les pages du site Orinoco-Oriteddies
+*/
 footer{
     position: absolute;
     bottom: 0;
@@ -12,7 +14,7 @@ footer{
         & li{
             display: inline-block;
             font-family: $text-style;
-            font-size: $footer;
+            font-size: $normal;
             margin: 30px 10px 0px 10px;
             text-align: center;
             color: $purple-dark;

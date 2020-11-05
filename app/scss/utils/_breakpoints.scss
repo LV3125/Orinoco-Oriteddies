@@ -1,5 +1,6 @@
-// MIXIN pour établir les différents breakpoints pour les médias queries
-// ***********************************************************************
+/* 
+* MIXIN pour établir les différents breakpoints pour les médias queries basé sur les breakpoint de Bootrstap
+*/ 
 @mixin responsive($breakpoint) {
     @if($breakpoint == sm){
         @media all and (max-width: 767px){ @content };
@@ -9,8 +10,5 @@
     }
     @if($breakpoint == lg){
         @media all and (max-width: 1199px){ @content };
-    }
-    @if($breakpoint == xl){
-        @media all and (min-width: 1200px){ @content };
     }
 }

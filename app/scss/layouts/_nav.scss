@@ -1,3 +1,6 @@
+/* NAVIGATION MENU
+* Les styles css pour le menu de navigation présent sur l'ensemble des pages du site Orinoco-Oriteddies
+*/
 #menu{
     z-index: 20;
     background-color: $purple-light;
@@ -13,7 +16,7 @@
         font-weight: 500;
         letter-spacing: 0.1em;
         font-family: $text-style;
-        font-size: $menu-item-size;
+        font-size: $text-little;
         border-bottom: 2px solid transparent;
         &:hover{
             color: $orange;
@@ -25,31 +28,4 @@
         border: 2px solid $orange;
         border-radius: 10px;
     }
-    // & .navbar-nav{
-    //     position: absolute;
-    //     right: 0;
-    //     & .nav-item a{
-    //         margin-left: 50px;
-    //         margin-right: 30px;
-    //         color: $purple-dark;
-    //         font-weight: 500;
-    //         letter-spacing: 0.1em;
-    //         font-family: $text-style;
-    //         font-size: $menu-item-size;
-    //         border-bottom: 2px solid transparent;
-    //         &:hover{
-    //             color: $orange;
-    //             border-bottom: 2px solid $orange;
-    //         }
-    //     }
-    //     & #current a{
-    //         color: $orange;
-    //         border: 2px solid $orange;
-    //         border-radius: 10px;
-    //     }
-    // }
-}
-
-#menu1{
-    background-color: $purple-light;
 }

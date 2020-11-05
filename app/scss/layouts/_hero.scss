@@ -1,4 +1,6 @@
-// HERO
+/* HERO
+* Les styles css pour le hero de la page d'accueil 
+*/
 #hero{
     height: 800px;
     background-image: url("../img/bear-hero-2.jpg");
@@ -19,6 +21,10 @@
     }
 }
 
+/*
+* RESPONSIVE
+* Style lorsque l'on passe sur un format téléphone
+*/
 @include responsive(sm){
     #hero{
         & #title-accueil{
@@ -32,6 +38,9 @@
     }
 }
 
+/*
+* Style lorsque l'on passe sur un format tablette
+*/
 @include responsive(md){
     #hero{
         background-position: 25% 75%;

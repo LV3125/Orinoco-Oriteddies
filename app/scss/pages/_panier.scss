@@ -1,3 +1,7 @@
+/* PAGE PANIER
+* Les styles css pour la page du panier et du formulaire de contact pour passer commande
+* La liste des produits présents dans le panier
+*/
 #basketRecap{
     margin: 180px 0 80px 0;
     & h1{
@@ -6,7 +10,7 @@
         margin-bottom: 70px;
     }
     & .row{
-        @include rowBasket;
+        @include rowBasket; // insertion de la mixin 'rowBasket' pour éviter la duplication d'un même code
         max-width: 70%;
         & .image{
             max-height: 500px;
@@ -21,7 +25,7 @@
             }
             & p{
                 font-family: $text-style;
-                font-size: $product-text;
+                font-size: $text-little;
                 margin-top: 2%;
             }
             & .quantityDiv{
@@ -52,10 +56,10 @@
         padding: 5%;
         font-family: $text-style;
         & p{
-            font-size: $text-productCard;
+            font-size: $text;
         }
         & button{
-            font-size: $text-productCard;
+            font-size: $text;
             background: $purple-light;
             border: 2px solid $purple-dark;
             margin-top: 3%;
@@ -72,14 +76,17 @@
         }
     }
 }
+/*
+* La zone qui récapitule le total du panier et invite à passer commande
+*/
 #totalBasket{
-    @include rowBasket;
+    @include rowBasket; // insertion de la mixin 'rowBasket' pour éviter la duplication d'un même code
     width: 50%;
     margin: 4% auto 0 auto;
     padding: 2%;
     font-family: $text-style;
     text-align: center;
-    font-size: $total-commande;
+    font-size: $text-big;
     & h2{
         margin-bottom: 2%;
     }
@@ -87,7 +94,7 @@
         font-weight: bold;
     }
     & .btn{
-        @include buttonPageProduit;
+        @include buttonPageProduit; // insertion de la mixin 'buttonPageProduit' pour éviter la duplication d'un même code
         border-color: $orange;
         color: $orange;
         font-weight: bold;
@@ -96,9 +103,12 @@
         }
     }
 }
+/*
+* Le formulaire de contact pour passer commande
+*/
 #formCommandSection{
-    width: 50%;
-    @include rowBasket;
+    width: 50%; 
+    @include rowBasket; // insertion de la mixin 'rowBasket' pour éviter la duplication d'un même code
     padding: 3% 5%;
     font-family: $text-style;
     & h2{
@@ -108,7 +118,7 @@
     }
     & .btn{
         margin: 0% auto 5% auto;
-        @include buttonPageProduit;
+        @include buttonPageProduit; // insertion de la mixin 'buttonPageProduit' pour éviter la duplication d'un même code
         border-color: $orange;
         color: $orange;
         font-weight: bold;
@@ -117,13 +127,13 @@
         }
     }
     & label{
-        font-size: $label;
+        font-size: $text-little;
     }
     & input{
         border: 2px solid $orange;
     }
     & p{
-        font-size: $little-text;
+        font-size: $normal;
         font-style: italic;
     }
     & span{
@@ -132,6 +142,10 @@
     }
 }
 
+/*
+* RESPONSIVE
+* Les styles lorsque l'on se trouve sur un format portable
+*/
 @include responsive(sm){
     #basketRecap{
         & .row{
@@ -166,6 +180,9 @@
     
 }
 
+/*
+* Les styles lorsque l'on se trouve sur un format tablette
+*/
 @include responsive(md){
     #formCommandSection{
         width: 90%;
@@ -175,6 +192,9 @@
     }
 }
 
+/*
+* Les styles lorsque l'on se trouve sur un format petit écran (desktop <1200px)
+*/
 @include responsive(lg){
     #totalBasket{
         & .btn{

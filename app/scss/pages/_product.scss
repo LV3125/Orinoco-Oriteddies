@@ -1,4 +1,6 @@
-// PRODUCTS PAGE
+/* PAGE LISTE PRODUITS
+* Les styles css pour la page qui liste l'ensemble des produits disponibles
+*/
 #productPage{
     margin-top: 160px;
     & h1{
@@ -20,20 +22,20 @@
             padding: 5% 2%;
             text-align: center;
             & h2{
-                font-size: $product-h2;
+                font-size: $product-title;
                 font-family: $title-style;
                 margin-bottom: 10%;
             }
             & p{
                 margin-bottom: 5%;
-                font-size: $product-name;
+                font-size: $text;
                 font-family: $text-style;
             }
             & .btn{
                 background-color: $purple-light;
                 border: 2px solid $purple;
                 font-family: $text-style;
-                font-size: $product-text;
+                font-size: $text-little;
                 margin-top: 5%;
                 transition: transform 0.2s ease-in-out;
                 &:hover{
@@ -47,7 +49,7 @@
         }
         & p, label{
             font-family: $text-style;
-            font-size: $product-text;
+            font-size: $text-little;
         }
     }
     & .informations{
@@ -55,6 +57,10 @@
     }
 }
 
+/*
+* RESPONSIVE
+* Les styles lorsque l'on se trouve sur un format tablette
+*/
 @include responsive(md){
     #productPage{
         & h1{
@@ -67,6 +73,9 @@
     
 }
 
+/*
+* Les styles lorsque l'on se trouve sur un format portable
+*/
 @include responsive(sm){
     #productPage{
         & .product{
