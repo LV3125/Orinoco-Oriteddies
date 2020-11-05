@@ -50,13 +50,14 @@ function commandeOursEnPeluche() {
                 productInfo.classList.add("row", "rowProduct");
 
             let productImage = document.createElement("div");
-                productImage.classList.add("image","col-6");
+                productImage.classList.add("image", "col-12", "col-md-6");
                 productImage.src = commande[i].image;
                 productImage.style.background = "url(" + productImage.src + ") no-repeat";
                 productImage.style.backgroundSize = "cover";
                 productImage.style.backgroundPosition = "center";
 
             let productDetail = document.createElement("div");
+                productDetail.classList.add("col-12", "col-md-6");
                 productDetail.classList.add("detail");
 
             let productName = document.createElement("h2");

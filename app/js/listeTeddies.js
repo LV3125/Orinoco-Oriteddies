@@ -42,14 +42,14 @@ function createListTeddies(teddies){
             productCard.classList.add('row', 'product');
 
         let productLeftDiv = document.createElement('div');
-            productLeftDiv.classList.add("col-5", "image-product")
+            productLeftDiv.classList.add("col-12", "col-md-5", "image-product")
             productLeftDiv.src = teddies[i].imageUrl;
             productLeftDiv.style.background = "url(" + productLeftDiv.src + ") no-repeat";
             productLeftDiv.style.backgroundPosition = "center";
             productLeftDiv.style.backgroundSize = "cover";
 
         let productRightDiv = document.createElement('div');
-            productRightDiv.classList.add("col-7", "title-product");
+            productRightDiv.classList.add("col-12", "col-md-7", "title-product");
 
         let productName = document.createElement('h2');
             productName.innerText = teddies[i].name;

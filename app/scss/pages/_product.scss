@@ -55,7 +55,7 @@
     }
 }
 
-@include responsive(tab-land){
+@include responsive(md){
     #productPage{
         & h1{
             margin-bottom: 30px;
@@ -65,4 +65,18 @@
         }
     }
     
+}
+
+@include responsive(sm){
+    #productPage{
+        & .product{
+            & .image-product{
+                height: 250px;
+                padding: 0;
+                border-bottom: 2px solid $purple-dark;
+                border-right: 0px;
+                border-radius: 10px 10px 0 0px;
+            }
+        }
+    }
 }

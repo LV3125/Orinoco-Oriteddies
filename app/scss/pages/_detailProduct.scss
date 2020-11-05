@@ -38,6 +38,19 @@
     }
 }
 
+@include responsive(sm){
+    #productDetailPage{
+        & #productCard{
+            & p, label{
+                padding: 0 3%;
+            }
+            & .productImagePageDetail{
+                height: 250px;
+            }
+        }
+    }
+}
+
 
 //FENETRE POPUP
 #popupAdd{

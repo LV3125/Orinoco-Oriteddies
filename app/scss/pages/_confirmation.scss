@@ -1,4 +1,5 @@
 #confirmCommand{
+    margin: 180px 0;
     & h1{
         font-family: $text-style;
         text-align: center;
@@ -17,5 +18,16 @@
         font-weight: bold;
         @include buttonPageProduit;
         margin: 2% auto;
+    }
+}
+
+@include responsive(sm){
+    #confirmCommand{
+        margin: 150px 0;
+    }
+    #resumeCommand{
+        width: 90%;
+        font-size: $product-h2;
+        margin-bottom: 200px;
     }
 }

@@ -49,7 +49,7 @@ function detailProduct(teddy){
         productImage.src = teddy.imageUrl;
         productImage.style.background = "url(" + productImage.src + ") no-repeat";
         productImage.style.backgroundPosition = "center";
-        productImage.style.backgroundSize = "contain";
+        productImage.style.backgroundSize = "cover";
 
     let productPrice = document.createElement("p");
         productPrice.textContent = teddy.price/100 + " €";

@@ -1,6 +1,6 @@
 // SECTION PRESENTATION PRODUIT
 main{
-    margin: 80px 0px;
+    margin: 80px 0px 150px 0px;
     & #image-presentation-produit{
         background-image: url("../img/bear-produit.jpg") ;
         background-size: cover;
@@ -37,7 +37,7 @@ main{
     }
 }
 
-@include responsive(phone){
+@include responsive(sm){
     main{
         & #image-presentation-produit{
             background-position: left;
@@ -48,7 +48,7 @@ main{
     }
 }
 
-@include responsive(tab-land){
+@include responsive(md){
     main{
         & #image-presentation-produit{
             height: 300px;

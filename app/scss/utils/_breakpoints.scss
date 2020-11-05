@@ -1,16 +1,16 @@
 // MIXIN pour établir les différents breakpoints pour les médias queries
 // ***********************************************************************
 @mixin responsive($breakpoint) {
-    @if($breakpoint == phone){
-        @media all and (max-width: 500px){ @content };
+    @if($breakpoint == sm){
+        @media all and (max-width: 767px){ @content };
     }
-    @if($breakpoint == tab-port){
-        @media all and (max-width: 700px){ @content };
+    @if($breakpoint == md){
+        @media all and (max-width: 991px){ @content };
     }
-    @if($breakpoint == tab-land){
-        @media all and (max-width: 1000px){ @content };
+    @if($breakpoint == lg){
+        @media all and (max-width: 1199px){ @content };
     }
-    @if($breakpoint == desktop){
-        @media all and (max-width: 1700px){ @content };
+    @if($breakpoint == xl){
+        @media all and (min-width: 1200px){ @content };
     }
 }

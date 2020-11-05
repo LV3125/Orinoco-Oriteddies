@@ -1,8 +1,9 @@
 #basketRecap{
+    margin: 180px 0 80px 0;
     & h1{
         font-family: $title-style;
         text-align: center;
-        margin-bottom: 5%;
+        margin-bottom: 70px;
     }
     & .row{
         @include rowBasket;
@@ -24,6 +25,7 @@
                 margin-top: 2%;
             }
             & .quantityDiv{
+                max-width: 100px;
                 text-align: center;
                 & p{
                    margin: 0;
@@ -130,3 +132,54 @@
     }
 }
 
+@include responsive(sm){
+    #basketRecap{
+        & .row{
+            max-width: 90%;
+            & .image{
+                height: 250px;
+                border-bottom: 2px solid $orange;
+                border-right: 0px;
+                border-radius: 10px 10px 0 0;
+            }
+            & .detail{
+                text-align: center;
+                & .quantityDiv{
+                    max-width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+        & .containNoBasket{
+            width: 90%;
+            margin-bottom: 200px;
+        }
+    }
+    #totalBasket{
+        width: 90%;
+        padding: 10%;
+        & .btn{
+            margin: 3% 0%;
+            min-width: 100%;
+        }
+    }
+    
+}
+
+@include responsive(md){
+    #formCommandSection{
+        width: 90%;
+        & .btn{
+            width: 100%;
+        }
+    }
+}
+
+@include responsive(lg){
+    #totalBasket{
+        & .btn{
+            min-width: 80%;
+            margin: 3% auto;
+        }
+    }
+}
