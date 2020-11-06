@@ -1,14 +1,18 @@
+/*
+* SCRIPT JavaScript - Affichage de la liste des produits disponibles
+*/
 
-// Appel de l'Api
+// Url de l'API - liste des produits
 const url = "http://localhost:3000/api/teddies";
 // Séléction de la balise div conteneur des produits
 const listBears = document.getElementById('fromServer');
 
-//Fonction
-let catchError = e => {
-    console.error("Erreur Ajax:" + e);
-}
-
+/*
+* Déclaration fonction:
+* - Requête vers l'API pour récupérer les données des produits sous forme de Promesse
+* - Si réussi: fonction resolve pour récupèrer la réponse
+* - Si échec: fonction reject pour récupèrer la requète et afficher l'erreur.
+*/
 let getTeddies = url => {
     return new Promise(function(resolve, reject){
         let request = new XMLHttpRequest();
@@ -26,16 +30,10 @@ let getTeddies = url => {
     });
 }
 
-getTeddies(url).then(response => {
-    let teddies = JSON.parse(response);
-    console.log(teddies);
-    createListTeddies(teddies);
-}).catch(catchError)
-.then(function(){
-    console.log("Fin des requêtes Ajax");
-});
-
-//Fonction globale pour créer la liste des ours en peluche présent sur l'API
+/* 
+* Déclaration fonction
+* Fonction qui permet de créer les éléments du DOM grâce à une boucle for, qui afficheront les diverses propriétés de la réponse(argument)
+*/
 function createListTeddies(teddies){
     for(let i = 0; i < teddies.length; i++) { 
         let productCard = document.createElement('section');
@@ -71,3 +69,20 @@ function createListTeddies(teddies){
         productRightDiv.append(productName,productPrice,productDescription, btnProduct);
     };
 }
+
+/*
+* Appel de la fonction getTeddies() en passant l'url de l'API en paramètre
+* - then: si réussi, parse la réponse, affiche la réponse dans la console et appel la fonction createListTeddies() en prenant en paramètre la réponse parsée
+* - catch: si echec, affiche l'erreur dans la console
+* - then: affiche la fin de l'exécution de la requête dans la console
+*/
+getTeddies(url).then(response => {
+    let teddies = JSON.parse(response);
+    console.log(teddies);
+    createListTeddies(teddies);
+}).catch(error => {
+    console.error(error);
+}).then(function(){
+    console.log("Fin des requêtes Ajax");
+});
+

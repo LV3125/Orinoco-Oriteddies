@@ -1,11 +1,17 @@
-// Récupération du localStorage
+/*
+* SCRIPT JavaScript - Affichage de la confirmation de la commande
+*/
+
+// Récupération des données du localStorage : total de la commande et le numéro de commande (réponse serveur)
 const myReponse = JSON.parse(localStorage.getItem("commande"));
 const myTotal = JSON.parse(localStorage.getItem("total"));
 console.log(myReponse);
 console.log("Numéro de commande: " + myReponse.orderId);
 
+// Séléction du conteneur du résumé de la commande
 let commandeResume = document.getElementById("resumeCommand");
 
+// Création des éléments du DOM
 let clientName = document.createElement("p");
     clientName.setAttribute("class", "col-12");
     clientName.innerHTML = "Merci <span class='bold'>" + myReponse.contact.firstName + "</span>";

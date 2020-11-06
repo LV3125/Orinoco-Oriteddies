@@ -1,5 +1,11 @@
+/*
+* SCRIPT JavaScript - Affichage du formulaire de contact pour passer la commande
+*/
+
+// Séléction du bouton qui permet d'accéder au formulaire de contact
 const myButtonSubmit = document.getElementById('btnToForm');
 
+// Séléction du conteneur du formulaire de contact qui est caché
 let formCommandSection = document.getElementById("formCommandSection");
     formCommandSection.style.display = "none";
 //Lorsque l'on clique sur passer la commande, on arrive de manière fluide sur le formulaire de commande qui s'affiche sous le bouton
@@ -30,8 +36,13 @@ let erreurAdresseComp = document.getElementById("messageAdresseComp");
 let erreurVille = document.getElementById("messageVille");
 let erreurEmail = document.getElementById("messageEmail");
 
+
+/*
+* Déclaration fonction
+* Permet de vérifier les données entrées dans le formulaire grâce à des règles regex
+*/
 function checkInput() {
-    // Regex
+    // Règle regex
     let checkNumber = /[0-9]/;
     let checkEmail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
     let checkSpecialCharacter = /[!@#$%^&*(),.?":{}|<>_]/;
@@ -106,13 +117,14 @@ function checkInput() {
     }   
 }
 
+// Sélection du formulaire de contact
 let form = document.getElementById("formCommandPast");
-//Appel de la fonction checkForm() lors de la soumission du formulaire
+//Appel de la fonction checlInput() lors de la soumission du formulaire
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     if(checkInput() != false){
         console.log("le formulaire est correct");
-        //Récupération des données saisie par l'utilisateur
+        //Récupération des données saisie par l'utilisateur en créant un objet 'contact'
         let contact = {
             firstName: formPrenom.value,
             lastName: formNom.value,
@@ -125,12 +137,17 @@ form.addEventListener("submit", (event) => {
         // Récupération de la commande
         let products = [];
         for (let i = 0; i < commande.length; i++) {
-            products.push(commande[i].id)
+            products.push(commande[i].id);
         };
-        // Ajout des données de contact et produit dans data
+        // Ajout des données de contact et produit dans dataPanier qui sera envoyé au serveur
         let dataPanier = { contact, products };
 
-        //Promesse pour créer la méthode qui envoie les données au serveur
+        /*
+        * Déclaration fonction:
+        * - Requête vers l'API pour envoyer les données au serveur sous forme de Promesse
+        * - Si réussi: fonction resolve pour récupérer la réponse
+        * - Si échec: fonction reject pour récupèrer la requète et afficher l'erreur.
+        */
         let reqToServer = url => {
             return new Promise(function(resolve, reject){
                 let req = new XMLHttpRequest();
@@ -149,6 +166,12 @@ form.addEventListener("submit", (event) => {
             });
         }
 
+        /*
+        * Appel de la fonction reqToServer() en passant l'url de l'API (order) en paramètre
+        * - then: si réussi, parse la réponse, affiche la réponse dans la console, on ajoute la réponse dans le localStorage et on ouvre la page "confirmation.html"
+        * - catch: si echec, appel de la fonction catchError qui affiche l'erreur dans la console
+        * - then: affiche la fin de l'exécution de la requête dans la console
+        */
         reqToServer("http://localhost:3000/api/teddies/order").then(function(resp){
             let response = JSON.parse(resp);
             console.log(response);

@@ -1,6 +1,14 @@
+/*
+* SCRIPT JavaScript - Affichage du panier
+*/
+
+// Séléction de la balise div conteneur des détails du panier
 let recapProduct = document.getElementById("basketRecap");
 
-//Déclaration total somme
+/*
+* Déclaration variable qui récupère le total du panier
+* Initialisation de cette variable à 0
+*/
 let total = 0; 
 
 // Récupération des données du localStorage
@@ -8,12 +16,16 @@ let objLinea = localStorage.getItem("obj");
 let commande = JSON.parse(objLinea);
 
 
-// Fonction d'intégration des élèments dans le tableau de notre panier
+/* 
+* Déclaration fonction 
+* Fonction qui permet de créer les éléments du DOM, qui afficheront les divers produits présents dans le tableau de commande
+*/
 function commandeOursEnPeluche() {
+    //Si le localStorage n'est pas vide
     if (commande && commande.length > 0) {
         //On supprime la div qui affiche que le panier est vide
         document.getElementById("emptyBasket").remove();
-        //Création des éléments dans le DOM
+        //Création des éléments dans le DOM pour le total du panier et la possibilité d'effacer le panier
         let totalBasket = document.getElementById("totalBasket");
             totalBasket.setAttribute("class", "row");
         let totalBasketText = document.createElement("h2");
@@ -76,7 +88,7 @@ function commandeOursEnPeluche() {
                 productQuantity.classList.add("bold");
                 productQuantity.innerHTML = "Quantité: " + commande[i].qte;
 
-            // Ajouter
+            // Ajouter une quantité au produit
             let addProduct = document.createElement("button");
                 addProduct.classList.add("btn");
                 addProduct.innerHTML = "<i class='fa fa-plus-square'></i>";
@@ -85,20 +97,18 @@ function commandeOursEnPeluche() {
                     let objLinea = localStorage.getItem("obj");
                     //On décode le contenu                    
                     let commande = JSON.parse(objLinea);       
-                    //On incrémente de 1 la quantité de cet objet et on met à jour le sous-total qu'on change dynamiquement dans le DOM
+                    //On incrémente de 1 la quantité de cet objet
                     commande[i].qte++;
                     productQuantity.innerHTML = "Quantité: " + commande[i].qte;
-                    // subPrice = `${tableOfProduct[i].quantity}` * priceComa;
-                    // subPriceUnique.innerHTML = "<span class='italic'>Sous-total:</span><span class='bold'> " + subPrice + "€</span>";
                     //On encode en JSON le tableau qui contient les nouvelles informations
                     commande = JSON.stringify(commande);
                     //On renvoit ce tableau dans le localStorage
                     localStorage.setItem("obj", commande);
-
+                    //On recharge la page
                     window.location.reload();
                 }
             
-            // Supprimer
+            // Supprimer une quantité au produit
             let removeProduct = document.createElement("button");
             removeProduct.classList.add("btn");
             removeProduct.innerHTML = "<i class='fa fa-minus-square'></i>";
@@ -107,34 +117,32 @@ function commandeOursEnPeluche() {
                 let objLinea = localStorage.getItem("obj");
                 //On décode le contenu                    
                 let commande = JSON.parse(objLinea);    
-                
+                //Si l'objet n'existe pas dans la liste, on retourne false
                 if(!commande[i]){
-                    //Si l'objet n'existe pas dans la liste, on retourne false
                     return false;
                 }else{
-                    //Si l'objet existe, on enlève 1 à la quantité de cet objet et on met à jour le sous-total qu'on change dynamiquement dans le DOM
+                    //Si l'objet existe, on enlève 1 à la quantité de cet objet
                     commande[i].qte--;
                     productQuantity.innerHTML = "Quantité: " + commande[i].qte;
-                    // subPrice = `${tableOfProduct[i].quantity}` * priceComa;
-                    // subPriceUnique.innerHTML = "<span class='italic'>Sous-total:</span><span class='bold'> " + subPrice + "€</span>";
                 }
+                //Si quantité = 0, on supprime le produit du panier
                 if(commande[i].qte <= 0 ){
-                    //On supprime la ligne du produit
                     commande.splice(i,1);
                 }
                 //On encode en JSON le tableau qui contient les nouvelles informations
                 commande = JSON.stringify(commande);
                 //On renvoit ce tableau dans le localStorage
                 localStorage.setItem("obj", commande);
-
+                //On recharge la page
                 window.location.reload();
             }
             
+            //Sous-total du produit (quantité * prix)
             let subPriceUnique = document.createElement("p");
             let subPrice = (commande[i].price/100) * commande[i].qte;
                 subPriceUnique.innerHTML = "<span class='italic'>Sous-total:</span><span class='bold'> " + subPrice + "€</span>";
 
-
+            //Supprimer un produit du panier
             let trashProduct = document.createElement("p");
                 trashProduct.setAttribute("id", "remove" + [i]);
                     trashProduct.innerHTML = "<i class='fa fa-trash'></i> Supprimer ce produit";
@@ -157,7 +165,7 @@ function commandeOursEnPeluche() {
             recapProduct.append(productInfo);
 
             console.log(commande[i]);
-            // Total de la commande
+            // Fonction qui calcul le total de la commande
             function totalCommande() {           
                 // Récupération du prix des articles
                 let value = (commande[i].price/100) * commande[i].qte;
@@ -170,8 +178,13 @@ function commandeOursEnPeluche() {
             totalCommande();
         }
     }else{
+        //Si le panier est vide, suppression de la div 'totalBasket'
         document.getElementById("totalBasket").remove();
         console.log("Le panier est vide");
     }
 }; 
+
+/*
+* Appel de la fonction "commandeOursEnPeluche()"
+*/
 commandeOursEnPeluche();

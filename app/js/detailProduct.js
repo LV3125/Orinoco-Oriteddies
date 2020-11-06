@@ -1,15 +1,26 @@
-// Appel de l'Api
+/*
+* SCRIPT JavaScript - Affichage des détails d'un produit
+*/
+
+// Url de l'API - liste des produits
 const url = "http://localhost:3000/api/teddies";
 
-// Récupération de l'id via l'URL
+// Récupération de l'id du produit via l'URL
 const hash = window.location.hash;
 const idHash = hash.replace('#', '/');
 const nomUrl = url + idHash;
 
-// Balise div séléctionner 
+
+// Séléction de la balise div conteneur des détails du produit
 const productCard = document.getElementById('productCard');
 
-// Promesse qui créé une nouvelle requête pour afficher les informations du produits
+
+/*
+* Déclaration fonction:
+* - Requête vers l'API pour récupérer les données des produits sous forme de Promesse
+* - Si réussi: fonction resolve pour récupèrer la réponse
+* - Si échec: fonction reject pour récupèrer la requète et afficher l'erreur.
+*/
 let getTeddy = url => {
     return new Promise(function(resolve, reject){
         let request = new XMLHttpRequest();
@@ -27,20 +38,12 @@ let getTeddy = url => {
     });
 }
 
-getTeddy(nomUrl).then(function(response){
-    let teddy = JSON.parse(response);
-    console.log(teddy);
-    detailProduct(teddy);
-}).catch(error => {
-    console.error(error);
-})
-.then(function(){
-    console.log("Fin des requêtes Ajax");
-})
-
-//Fonction globale qui créer la carte de détail produit et qui permet l'ajout du produit au panier
+/* 
+* Déclaration fonction 
+* Fonction qui permet de créer les éléments du DOM, qui afficheront les diverses propriétés de la réponse(argument)
+*/
 function detailProduct(teddy){
-    // Sélection des éléments
+    // Création des éléments dans le DOM
     let productTitle = document.createElement("h1");
         productTitle.textContent = teddy.name;
 
@@ -65,6 +68,7 @@ function detailProduct(teddy){
     let colorsSelector = document.createElement("select");
         colorsSelector.setAttribute("class", "color_ours");
     let colors = teddy.colors;
+    // Boucle for pour afficher sous forme de choix d'options, les différentes couleurs disponibles du produit
     for (let i = 0; i < colors.length; i++) {
         let myOption = document.createElement('option');
         myOption.textContent = colors[i];
@@ -77,7 +81,11 @@ function detailProduct(teddy){
     colorDiv.prepend(choiceLabel, colorsSelector);
     productCard.prepend(productTitle, productImage, productPrice, productDescription, colorDiv);
     
-    // Stockage des informations dans le localStorage
+    /*
+    * Création d'un évènement lorsque l'on clique sur le bouton "ajouter au panier"
+    * Création de l'objet "objJson" = information du produit ajouté
+    * Stockage des informations dans le localStorage
+    */ 
     mySubmit.addEventListener('click', function (event) {
         let objJson = {
             id: teddy._id,
@@ -90,21 +98,19 @@ function detailProduct(teddy){
         
         let tableOfProducts = localStorage.getItem("obj");
 
-        //On vérifie si la liste existe
+        //On vérifie si le tableau contenant les articles ajoutés existe
         if(!tableOfProducts){
-            //Si elle n'existe pas
+            //Si elle n'existe pas : on créer le tableau et on ajoute un produit
             tableOfProducts = [];
             objJson.qte = 1;
             tableOfProducts.push(objJson);
         }else{ 
-            //Si elle existe
+            //Si elle existe : on parse le tableau et on l'affiche dans la console
             tableOfProducts = JSON.parse(tableOfProducts);
             console.log(tableOfProducts);
-
-            //On vérifie si le produit choisi est présent dans le tableau en comparant les id
-            if(tableOfProducts.find( choice => choice.id === objJson.id &&  choice.colors === objJson.colors)){
-                //Si il existe
-                objJson.qte++;
+            //On vérifie un des éléments du tableau possède le même id et la même couleur que le produit sélectionné
+            if(tableOfProducts.find(choice => choice.id === objJson.id &&  choice.colors === objJson.colors)){
+                //Si oui: boucle for qui passe dans le tableau et qui incrémente de 1 la quantité du produit qui possède le même id et la même couleur que le produit sélectionné
                 for(var i = 0; i < tableOfProducts.length; i++){
                     if(objJson.id === tableOfProducts[i].id && objJson.colors === tableOfProducts[i].colors){
                         tableOfProducts[i].qte++;
@@ -112,18 +118,21 @@ function detailProduct(teddy){
                     }
                 }
             }else{
-                //Si il n'existe pas
+                //Si il n'existe pas: on définit la quantité du produit à 1 et on l'ajoute au tableau
                 objJson.qte = 1;
                 tableOfProducts.push(objJson);
             }
         }
-        //On encode le tableau au format JSON avant de l'envoyer
+        //On encode le tableau au format JSON
         tableOfProducts = JSON.stringify(tableOfProducts);
 
         //On renvoie le tableau au localStorage
         localStorage.setItem("obj", tableOfProducts);
         
-        //Fenêtre PoPup
+        /*
+        * Fenêtre PoPup
+        * Affiche un choix: voir le panier ou continuer les achats
+        */
         let popupAdded = document.getElementById("popupAdd");
         if(popupAdded.classList.contains("hide")){
             popupAdded.classList.remove("hide");
@@ -133,3 +142,21 @@ function detailProduct(teddy){
         }
     });
 }
+
+
+/*
+* Appel de la fonction getTeddy() en passant l'url de l'API + id en paramètre
+* - then: si réussi, parse la réponse, affiche la réponse dans la console et appel la fonction detailProduct() en prenant en paramètre la réponse parsée
+* - catch: si echec, affiche l'erreur dans la console
+* - then: affiche la fin de l'exécution de la requête dans la console
+*/
+getTeddy(nomUrl).then(function(response){
+    let teddy = JSON.parse(response);
+    console.log(teddy);
+    detailProduct(teddy);
+}).catch(error => {
+    console.error(error);
+})
+.then(function(){
+    console.log("Fin des requêtes Ajax");
+})
