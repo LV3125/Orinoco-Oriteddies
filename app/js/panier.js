@@ -20,7 +20,7 @@ let commande = JSON.parse(objLinea);
 * Déclaration fonction 
 * Fonction qui permet de créer les éléments du DOM, qui afficheront les divers produits présents dans le tableau de commande
 */
-function commandeOursEnPeluche() {
+(function commandeOursEnPeluche() {
     //Si le localStorage n'est pas vide
     if (commande && commande.length > 0) {
         //On supprime la div qui affiche que le panier est vide
@@ -182,9 +182,5 @@ function commandeOursEnPeluche() {
         document.getElementById("totalBasket").remove();
         console.log("Le panier est vide");
     }
-}; 
+})(); 
 
-/*
-* Appel de la fonction "commandeOursEnPeluche()"
-*/
-commandeOursEnPeluche();
