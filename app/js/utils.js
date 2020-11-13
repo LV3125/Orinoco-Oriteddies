@@ -22,8 +22,8 @@ let getResp = url => {
 }
 
 
- /*
-* Déclaration fonction:
+/*
+* Requête POST
 * - Requête vers l'API pour envoyer les données au serveur sous forme de Promesse
 * - Si réussi: fonction resolve pour récupérer la réponse
 * - Si échec: fonction reject pour récupèrer la requète et afficher l'erreur.

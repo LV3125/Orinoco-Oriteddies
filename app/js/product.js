@@ -1,12 +1,21 @@
 /*
-* SCRIPT JavaScript - Affichage de la liste des produits disponibles
+* SCRIPT JavaScript - Affichage dynamique des résultats de l'API (GET)
 */
 
-// Url de l'API - liste des produits
+/*
+* URL de l'API
+* URL avec l'id d'un produit
+*/ 
 const url = "http://localhost:3000/api/teddies";
-// Séléction de la balise div conteneur des produits
-const listBears = document.getElementById('fromServer');
+const hash = window.location.hash;
+const idHash = hash.replace('#', '/');
+const nomUrl = url + idHash;
 
+/*
+* LISTE DES MODELES
+*/
+// Séléction de la balise div conteneur des modèles
+const listBears = document.getElementById('fromServer');
 /*
 * Appel de la fonction getTeddies() en passant l'url de l'API en paramètre
 * - then: si réussi, parse la réponse, affiche la réponse dans la console et appel la fonction createListTeddies() en prenant en paramètre la réponse parsée
@@ -24,20 +33,12 @@ getResp(url).then(response => {
 });
 
 
+
 /*
-* SCRIPT JavaScript - Affichage des détails d'un produit
+* DETAIL D'UN MODELE
 */
-
-// Récupération de l'id du produit via l'URL
-const hash = window.location.hash;
-const idHash = hash.replace('#', '/');
-const nomUrl = url + idHash;
-
-
 // Séléction de la balise div conteneur des détails du produit
 const productCard = document.getElementById('productCard');
-
-
 /*
 * Appel de la fonction getTeddy() en passant l'url de l'API + id en paramètre
 * - then: si réussi, parse la réponse, affiche la réponse dans la console et appel la fonction detailProduct() en prenant en paramètre la réponse parsée

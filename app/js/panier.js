@@ -17,7 +17,7 @@ let commande = JSON.parse(objLinea);
 
 
 /* 
-* Déclaration fonction 
+* Fonction nommée auto-invoquée
 * Fonction qui permet de créer les éléments du DOM, qui afficheront les divers produits présents dans le tableau de commande
 */
 (function commandeOursEnPeluche() {

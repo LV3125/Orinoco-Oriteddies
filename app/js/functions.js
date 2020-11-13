@@ -1,5 +1,10 @@
+/*
+* SCRIPT qui regroupe l'ensemble des fonctions utilisées sur le site
+*/
+
+
 /* 
-* Déclaration fonction
+* CREATLISTTEDDIES()
 * Fonction qui permet de créer les éléments du DOM grâce à une boucle for, qui afficheront les diverses propriétés de la réponse(argument)
 */
 function createListTeddies(teddies){
@@ -40,7 +45,7 @@ function createListTeddies(teddies){
 
 
 /* 
-* Déclaration fonction 
+* DETAILPRODUCT() 
 * Fonction qui permet de créer les éléments du DOM, qui afficheront les diverses propriétés de la réponse(argument)
 */
 function detailProduct(teddy){
@@ -145,9 +150,8 @@ function detailProduct(teddy){
 }
 
 
-
 /*
-* Déclaration fonction
+* CHECKINPUT()
 * Permet de vérifier les données entrées dans le formulaire grâce à des règles regex
 */
 function checkInput() {
