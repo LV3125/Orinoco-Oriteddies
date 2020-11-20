@@ -23,6 +23,7 @@ let commande = JSON.parse(objLinea);
 (function commandeOursEnPeluche() {
     //Si le localStorage n'est pas vide
     if (commande && commande.length > 0) {
+        console.log("Votre panier contient un/des produit(s) !");
         //On supprime la div qui affiche que le panier est vide
         document.getElementById("emptyBasket").remove();
         //Création des éléments dans le DOM pour le total du panier et la possibilité d'effacer le panier
@@ -56,6 +57,7 @@ let commande = JSON.parse(objLinea);
         /*
         * Boucle for pour créer les éléments dans le DOM pour chaque élément de la liste de produits sélectionnés
         */
+        console.log("Résumé de la commande : ")
         for(let i = 0; i < commande.length; i++) {
 
             let productInfo = document.createElement("div");
@@ -166,21 +168,21 @@ let commande = JSON.parse(objLinea);
 
             console.log(commande[i]);
             // Fonction qui calcul le total de la commande
-            function totalCommande() {           
+            (function totalCommande() {           
                 // Récupération du prix des articles
                 let value = (commande[i].price/100) * commande[i].qte;
                 // Addition des articles
                 total = total + value;
                 totalBasketPrice.textContent = total + " €";
                 // Ajout du prix total des articles dans le formulaire d'achat     
-                const myTotal = localStorage.setItem("total", total);         
-            };      
-            totalCommande();
+                const myTotal = localStorage.setItem("total", total);
+                console.log("Total de la commande: " + total + "€");         
+            })();
         }
     }else{
         //Si le panier est vide, suppression de la div 'totalBasket'
         document.getElementById("totalBasket").remove();
-        console.log("Le panier est vide");
+        console.log("Le panier est vide !");
     }
 })(); 
 

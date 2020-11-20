@@ -28,10 +28,15 @@ let totalCommand = document.createElement("p");
 let returnHome = document.createElement("button");
     returnHome.setAttribute("class", "btn btn-home");
     returnHome.innerText = "Retour à l'accueil";
-    returnHome.addEventListener("click", function(event){
+    returnHome.addEventListener("click", function(){
         localStorage.clear();
         window.location.href = "index.html";
     });
 
+let logo = document.getElementById("logo");
+    logo.addEventListener("click", function(){
+        localStorage.clear();
+        window.location.href = "index.html";
+    });
     
 commandeResume.append(clientName, numCommand, totalCommand, returnHome);

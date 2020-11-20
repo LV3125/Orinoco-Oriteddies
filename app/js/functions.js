@@ -8,6 +8,7 @@
 * Fonction qui permet de créer les éléments du DOM grâce à une boucle for, qui afficheront les diverses propriétés de la réponse(argument)
 */
 function createListTeddies(teddies){
+    console.log("La fonction createListTeddies() a bien été appelé !");
     for(let i = 0; i < teddies.length; i++) { 
         let productCard = document.createElement('section');
             productCard.classList.add('row', 'product');
@@ -35,6 +36,7 @@ function createListTeddies(teddies){
             btnProduct.classList.add("btn");
             btnProduct.textContent = "En savoir plus";
             btnProduct.setAttribute("href", "ficheProduit.html#" + teddies[i]._id);
+            console.log("L'url à suivre pour le produit : " + teddies[i].name + " : ficheProduit.html#" + teddies[i]._id);
             
 
         listBears.append(productCard);
@@ -49,6 +51,7 @@ function createListTeddies(teddies){
 * Fonction qui permet de créer les éléments du DOM, qui afficheront les diverses propriétés de la réponse(argument)
 */
 function detailProduct(teddy){
+    console.log("L'url du produit : " + teddy.name + " : ficheProduit.html#" + teddy._id);
     // Création des éléments dans le DOM
     let productTitle = document.createElement("h1");
         productTitle.textContent = teddy.name;
@@ -107,24 +110,27 @@ function detailProduct(teddy){
         //On vérifie si le tableau contenant les articles ajoutés existe
         if(!tableOfProducts){
             //Si elle n'existe pas : on créer le tableau et on ajoute un produit
+            console.log("Le panier était vide. Il est désormais créé !");
             tableOfProducts = [];
             objJson.qte = 1;
             tableOfProducts.push(objJson);
+            console.log("Le produit a bien été ajouté au panier");
         }else{ 
             //Si elle existe : on parse le tableau et on l'affiche dans la console
             tableOfProducts = JSON.parse(tableOfProducts);
-            console.log(tableOfProducts);
             //On vérifie un des éléments du tableau possède le même id et la même couleur que le produit sélectionné
             if(tableOfProducts.find(choice => choice.id === objJson.id &&  choice.colors === objJson.colors)){
                 //Si oui: boucle for qui passe dans le tableau et qui incrémente de 1 la quantité du produit qui possède le même id et la même couleur que le produit sélectionné
                 for(var i = 0; i < tableOfProducts.length; i++){
                     if(objJson.id === tableOfProducts[i].id && objJson.colors === tableOfProducts[i].colors){
+                        console.log("Le panier n'est pas vide et contient déjà ce produit. Sa quantité est augmentée de 1");
                         tableOfProducts[i].qte++;
                         break;
                     }
                 }
             }else{
                 //Si il n'existe pas: on définit la quantité du produit à 1 et on l'ajoute au tableau
+                console.log("Le panier n'est pas vide et ne contient pas encore ce produit. Sa quantité est initialisée à 1");
                 objJson.qte = 1;
                 tableOfProducts.push(objJson);
             }
@@ -157,7 +163,7 @@ function detailProduct(teddy){
 function checkInput() {
     // Règle regex
     let checkNumber = /[0-9]/;
-    let checkEmail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+    let checkEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
     let checkSpecialCharacter = /[!@#$%^&*(),.?":{}|<>_]/;
 
     //Vérification de chaque input et affichage des erreurs personnalisées par input

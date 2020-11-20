@@ -1,4 +1,14 @@
 /*
+* URL de l'API
+* URL avec l'id d'un produit
+*/ 
+const url = "http://localhost:3000/api/teddies";
+const hash = window.location.hash;
+const idHash = hash.replace('#', '/');
+const nomUrl = url + idHash;
+
+
+/*
 * Requête GET
 * - Requête vers l'API pour récupérer les données des produits sous forme de Promesse en fonction de l'url passer en paramètre
 * - Si réussi: fonction resolve pour récupèrer la réponse
