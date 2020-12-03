@@ -58,20 +58,16 @@
         & p{
             font-size: $text;
         }
-        & button{
+        & .btn{
             font-size: $text;
             background: $purple-light;
             border: 2px solid $purple-dark;
             margin-top: 3%;
-            & a{
-                color: $purple-dark;
-            }
+            color: $purple-dark;
             &:hover{
                 background: $purple-dark;
-                & a{
-                    color: white;
-                    text-decoration: none;
-                }
+                color: white;
+                text-decoration: none;
             }
         }
     }
