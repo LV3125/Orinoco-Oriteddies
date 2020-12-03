@@ -162,15 +162,16 @@ function detailProduct(teddy){
 */
 function checkInput() {
     // Règle regex
+    let checkCaract = /[a-zA-Z]/;
     let checkNumber = /[0-9]/;
     let checkEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
-    let checkSpecialCharacter = /[!@#$%^&*(),.?":{}|<>_]/;
+    let checkSpecialCharacter = /[!@#$%^&*(),.?":{}|<>_/-]/;
 
     //Vérification de chaque input et affichage des erreurs personnalisées par input
     //Prénom
-    if(checkNumber.test(formPrenom.value) == true || checkSpecialCharacter.test(formPrenom.value) == true || formPrenom.value.length > 25 || formPrenom.value == ""){
+    if(checkNumber.test(formPrenom.value) == true || checkSpecialCharacter.test(formPrenom.value) == true || formPrenom.value.length > 25 || formPrenom.value.length < 2 || formPrenom.value == ""){
         erreurPrenom.style.display = "";
-        erreurPrenom.innerHTML = "Problème ! Les chiffres et les caractères spéciaux ne sont pas autorisés ! (25 caractères max)";
+        erreurPrenom.innerHTML = "Problème ! Les chiffres et les caractères spéciaux ne sont pas autorisés ! (entre 2 et 25 caractères)";
         formPrenom.classList.add("erreurInput");
         return false; 
         
@@ -180,9 +181,9 @@ function checkInput() {
         formPrenom.classList.remove("erreurInput");
     }
     //Nom
-    if(checkNumber.test(formNom.value) == true || checkSpecialCharacter.test(formNom.value) == true || formNom.value.length > 25 || formNom.value == ""){
+    if(checkNumber.test(formNom.value) == true || checkSpecialCharacter.test(formNom.value) == true || formNom.value.length > 25 || formNom.value.length < 2 || formNom.value == ""){
         erreurNom.style.display = "";
-        erreurNom.innerHTML = "Problème ! Les chiffres et les caractères spéciaux ne sont pas autorisés ! (25 caractères max)";
+        erreurNom.innerHTML = "Problème ! Les chiffres et les caractères spéciaux ne sont pas autorisés ! (entre 2 et 25 caractères)";
         formNom.classList.add("erreurInput");
         return false;    
     }else{
@@ -191,9 +192,9 @@ function checkInput() {
         formNom.classList.remove("erreurInput");
     }
     //Adresse
-    if(checkSpecialCharacter.test(formAdresse.value) == true || formAdresse.value.length > 100 || formAdresse.value == ""){
+    if(checkNumber.test(formAdresse.value) == false || checkCaract.test(formAdresse.value) == false || checkSpecialCharacter.test(formAdresse.value) == true || formAdresse.value.length > 100 || formAdresse.value == ""){
         erreurAdresse.style.display = "";
-        erreurAdresse.innerHTML = "Problème ! Les caractères spéciaux ne sont pas autorisés ! (100 caractères max)";
+        erreurAdresse.innerHTML = "Problème ! Les caractères spéciaux ne sont pas autorisés ! Il doit au moins avoir un chiffre (100 caractères max)";
         formAdresse.classList.add("erreurInput");
         return false;    
     }else{
@@ -213,9 +214,9 @@ function checkInput() {
         formAdresseComp.classList.remove("erreurInput");
     }
     //Ville
-    if(checkNumber.test(formVille.value) == true || checkSpecialCharacter.test(formVille.value) == true || formVille.value.length > 40 || formVille.value == ""){
+    if(checkNumber.test(formVille.value) == true || checkSpecialCharacter.test(formVille.value) == true || formVille.value.length > 40 || formVille.value.length < 2 || formVille.value == ""){
         erreurVille.style.display = "";
-        erreurVille.innerHTML = "Problème ! Les chiffres et les caractères spéciaux ne sont pas autorisés ! (40 caractères max)";
+        erreurVille.innerHTML = "Problème ! Les chiffres et les caractères spéciaux ne sont pas autorisés ! (entre 2 et 40 caractères)";
         formVille.classList.add("erreurInput");
         return false;  
     }else{
